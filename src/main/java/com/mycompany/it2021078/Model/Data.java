@@ -28,7 +28,7 @@ public class Data {
     static ArrayList<Series> miniSeriesList;
 
     // Constructors
-    
+    //Ηello
     public Data(){}
     public Data(ArrayList<Movie> moviesList, ArrayList<Directors> directorsList, ArrayList<Actors> actorsList, ArrayList<Series> seriesList ,ArrayList<Series> miniSeriesList) {
         this.moviesList = moviesList;
