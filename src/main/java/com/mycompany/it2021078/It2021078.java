@@ -31,7 +31,7 @@ public class It2021078 {
 //        ArrayList<Actors> actorsList = new ArrayList<Actors>();
 //        ArrayList<Accounts> accountsList = new ArrayList<Accounts>();
         Data data = new Data(new ArrayList<>(),new ArrayList<>(),new ArrayList<>(),new ArrayList<>(),new ArrayList<>());
-        
+        data.initiateDataArrays();
         // Create new object addShowOperation 
         addShowOperation operation = new addShowOperation();
         

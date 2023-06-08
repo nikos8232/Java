@@ -10,6 +10,7 @@ import com.mycompany.it2021078.Model.People.Directors;
 import com.mycompany.it2021078.Model.People.Actors;
 import com.mycompany.it2021078.Model.Shows.Series;
 import com.mycompany.it2021078.Model.Shows.Shows;
+import com.mycompany.it2021078.Utils.Initializator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +90,14 @@ public class Data {
         this.miniSeriesList = miniSeriesList;
     }
 
-    
+    //Initiate data
+
+     public void initiateDataArrays(){
+        Initializator init = new Initializator();
+        this.setActorsList(init.getActors());
+        this.setDirectorsList(init.getDirectors());
+        this.setMoviesList(init.getMovies());
+        this.setSeriesList(init.getSeries());
+    }
     
 }
