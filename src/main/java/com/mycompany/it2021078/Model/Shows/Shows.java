@@ -18,6 +18,7 @@ public class Shows {
     protected String prodCountry;
     protected String directorInfo;
     protected ArrayList<String> actorInfo;
+    protected ArrayList<Rate> rates;
     
     @Override
     public String toString() {
@@ -34,7 +35,7 @@ public class Shows {
         this.prodCountry = prodCountry;
         this.directorInfo = directorInfo;
         this.actorInfo = actorInfo;
-           
+        this.rates = new ArrayList<Rate>();
     }
    
     
@@ -53,6 +54,21 @@ public class Shows {
       return title;
     }
 
+    public String getAverageRate(){
+        int sum = 0;
+        String result;
+        for(int i =0; i < this.rates.size(); i++){
+            sum += this.rates.get(i).getRate();
+        }
+        if(sum == 0){
+            return "No reviews";
+        }
+        else{
+            return String.valueOf((float)sum/(float)this.rates.size()) + "/10";
+        }
+    }
+    public ArrayList<Rate> getRates(){return  this.rates;}
+
     // Setter
     public void setTitle(String newTitle) {
       this.title = newTitle;
@@ -67,6 +83,8 @@ public class Shows {
     public void setGenre(ArrayList<String> newGenre) {
       this.genre = newGenre;
     }
+
+    public void addRate(Rate rate){this.rates.add(rate);}
     
     // Getter
     public String getYear1() {
