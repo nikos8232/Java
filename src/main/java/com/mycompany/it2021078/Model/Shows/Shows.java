@@ -13,7 +13,7 @@ public class Shows {
     
     protected String showId;
     protected String title;
-    protected ArrayList<String> genre;
+    protected ArrayList<String> genre  = new ArrayList<>();
     protected String year1;
     protected String prodCountry;
     protected String directorInfo;
@@ -21,7 +21,7 @@ public class Shows {
     
     @Override
     public String toString() {
-        return "Shows [showId=" + showId + ", title=" + title +  ", genre=" + genre + ", year1=" + year1 + ", prodCountry=" + prodCountry + ", directorInfo=" + directorInfo + ", actorInfo=" + actorInfo +"]";
+        return "Show Id=" + showId + ", Title=" + title +  ", Show Type=Show" + genre + ", genre=" + genre + ", directorInfo=" + directorInfo + "]";
     }
     
     public Shows(){}

@@ -8,6 +8,7 @@ import com.mycompany.it2021078.Model.Accounts.Accounts;
 import com.mycompany.it2021078.Model.Shows.Movie;
 import com.mycompany.it2021078.Model.People.Directors;
 import com.mycompany.it2021078.Model.People.Actors;
+import com.mycompany.it2021078.Model.Shows.MiniSeries;
 import com.mycompany.it2021078.Model.Shows.Series;
 import com.mycompany.it2021078.Model.Shows.Shows;
 
@@ -25,12 +26,12 @@ public class Data {
     static ArrayList<Directors> directorsList;
     static ArrayList<Actors> actorsList;
     static ArrayList<Series> seriesList;
-    static ArrayList<Series> miniSeriesList;
+    static ArrayList<MiniSeries> miniSeriesList;
 
     // Constructors
-    
+    //Ηello
     public Data(){}
-    public Data(ArrayList<Movie> moviesList, ArrayList<Directors> directorsList, ArrayList<Actors> actorsList, ArrayList<Series> seriesList ,ArrayList<Series> miniSeriesList) {
+    public Data(ArrayList<Movie> moviesList, ArrayList<Directors> directorsList, ArrayList<Actors> actorsList, ArrayList<Series> seriesList ,ArrayList<MiniSeries> miniSeriesList) {
         this.moviesList = moviesList;
         //this.showsList = showsList;
         this.directorsList = directorsList;
@@ -60,7 +61,7 @@ public class Data {
         return seriesList;
     }
 
-    public static ArrayList<Series> getMiniSeriesList() {
+    public static ArrayList<MiniSeries> getMiniSeriesList() {
         return miniSeriesList;
     }
 
@@ -85,7 +86,7 @@ public class Data {
         this.seriesList = seriesList;
     }
 
-    public void setMiniSeriesList(ArrayList<Series> miniSeriesList) {
+    public void setMiniSeriesList(ArrayList<MiniSeries> miniSeriesList) {
         this.miniSeriesList = miniSeriesList;
     }
 

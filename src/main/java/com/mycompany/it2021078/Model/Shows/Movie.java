@@ -16,7 +16,7 @@ public class Movie extends Shows {
     
      @Override
     public String toString() {
-        return "Movie [showId=" + showId + ", title=" + title +  ", genre=" + genre + ", year1=" + year1 + ", prodCountry=" + prodCountry + ", directorInfo=" + directorInfo + ", actorInfo=" + actorInfo +"]";
+        return "Show Id=" + showId + ", Title=" + title +  ", Show Type=Movie" + genre + ", genre=" + genre + ", directorInfo=" + directorInfo;
     }
     
     public Movie(){}
