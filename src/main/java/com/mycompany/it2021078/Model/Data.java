@@ -8,6 +8,7 @@ import com.mycompany.it2021078.Model.Accounts.Accounts;
 import com.mycompany.it2021078.Model.Shows.Movie;
 import com.mycompany.it2021078.Model.People.Directors;
 import com.mycompany.it2021078.Model.People.Actors;
+import com.mycompany.it2021078.Model.Shows.MiniSeries;
 import com.mycompany.it2021078.Model.Shows.Series;
 import com.mycompany.it2021078.Model.Shows.MiniSeries;
 import com.mycompany.it2021078.Model.Shows.Shows;
@@ -30,7 +31,7 @@ public class Data {
     static ArrayList<MiniSeries> miniSeriesList;
 
     // Constructors
-    
+    //Ηello
     public Data(){}
     public Data(ArrayList<Movie> moviesList, ArrayList<Directors> directorsList, ArrayList<Actors> actorsList, ArrayList<Series> seriesList ,ArrayList<MiniSeries> miniSeriesList) {
         this.moviesList = moviesList;

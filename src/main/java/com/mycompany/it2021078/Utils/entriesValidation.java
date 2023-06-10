@@ -14,14 +14,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 /**
  *
  * @author nik
  */
 public class entriesValidation {
-    
-    // Example method that takes the variables as parameters
+
+
 public boolean isDirectorsPresent(List<Directors> directors, String name, String surname) {
     return directors.stream()
         .anyMatch(director -> director.getFName().equals(name) && director.getLName().equals(surname));
