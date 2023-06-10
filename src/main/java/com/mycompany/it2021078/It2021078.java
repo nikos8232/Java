@@ -7,6 +7,7 @@ package com.mycompany.it2021078;
 import com.mycompany.it2021078.Constants.AsciiArt;
 import com.mycompany.it2021078.Constants.Messages;
 import com.mycompany.it2021078.Operations.addShowOperation;
+import com.mycompany.it2021078.Operations.searchShowOperation;
 import com.mycompany.it2021078.Model.Accounts.Accounts;
 import com.mycompany.it2021078.Model.Data;
 import com.mycompany.it2021078.Model.Shows.Movie;
@@ -32,8 +33,11 @@ public class It2021078 {
 //        ArrayList<Accounts> accountsList = new ArrayList<Accounts>();
         Data data = new Data(new ArrayList<>(),new ArrayList<>(),new ArrayList<>(),new ArrayList<>(),new ArrayList<>());
         data.initiateDataArrays();
+        
         // Create new object addShowOperation 
-        addShowOperation operation = new addShowOperation();
+        addShowOperation addShowOperation = new addShowOperation();
+        
+        searchShowOperation searchShowOperation - new searchShowOperation();
         
         
         while(true){
@@ -51,19 +55,9 @@ public class It2021078 {
                 //tasaras
                 switch(user_choice) {
 
-                        case "1" -> operation.InsertShow(data);
+                        case "1" -> addShowOperation.InsertShow(data);
 
-                        case "2" -> { System.out.println("**********");
-                                           
-                                            System.out.println(Data.getMoviesList());
-                                            System.out.println(Data.getSeriesList());
-                                            System.out.println(Data.getMiniSeriesList());
-                                            System.out.println(Data.getDirectorsList());
-                                            System.out.println(Data.getActorsList());
-                                            
-                                            //System.out.println(MoviesList);
-                                            //System.out.println(actorsList);
-                                            //System.out.println(directorsList);
+                        case "2" -> { 
                 }
 
                         case "3" -> {
@@ -76,6 +70,14 @@ public class It2021078 {
                 }
 
                         case "6" -> {
+                                            System.out.println("**********");
+                                           
+                                            System.out.println(Data.getMoviesList());
+                                            System.out.println(Data.getSeriesList());
+                                            System.out.println(Data.getMiniSeriesList());
+                                            System.out.println(Data.getDirectorsList());
+                                            System.out.println(Data.getActorsList());
+
                 }
 
                        default -> {

@@ -108,7 +108,6 @@ public class addShowOperation {
             show.setTitle(answer.nextLine());
         }
 
-        System.out.println(show.getClass().getSimpleName());
         
         // Insert movie release year
         while(show.getYear1() == null || show.getYear1().isEmpty()){
@@ -223,14 +222,10 @@ public class addShowOperation {
         }   
             // Combine director first and last name to one to use later
             director_full_name = director_name + " " + director_surname;
-            System.out.println("*************");
-            System.out.println(director_full_name);
-            System.out.println("*************");
-
-            show.setDirectorInfo(director_full_name);
-            System.out.println(show.getDirectorInfo());
             
+            show.setDirectorInfo(director_full_name);
            
+
          boolean isDirectorsPresent = checkDuplicatesEntries.isDirectorsPresent(directorsList, director_name, director_surname);  
   
 
@@ -361,10 +356,7 @@ public class addShowOperation {
 
         UUID uniqueDirectorId = UUID.randomUUID();
         show.setActorInfo(actors_array_list);
-        System.out.println("******************");
-        System.out.println(actors_array_list);
-        System.out.println("********************");
-
+       
         show_id = uniqueDirectorId.toString();
         show.setShowId(show_id);
         //Movie newMovie = new Movie(show_id, title, genres_list, releaseYear, countryofProduction, director_full_name, actors_array_list);
