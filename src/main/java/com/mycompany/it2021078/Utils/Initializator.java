@@ -2,6 +2,7 @@ package com.mycompany.it2021078.Utils;
 
 import com.mycompany.it2021078.Model.People.Actors;
 import com.mycompany.it2021078.Model.People.Directors;
+import com.mycompany.it2021078.Model.Shows.MiniSeries;
 import com.mycompany.it2021078.Model.Shows.Movie;
 import com.mycompany.it2021078.Model.Shows.Series;
 
@@ -10,66 +11,82 @@ import java.util.ArrayList;
 public class Initializator {
     public ArrayList<Actors> getActors(){
         ArrayList<Actors> actors = new ArrayList<Actors>();
-        actors.add(new Actors("1","Robert", "Deniro",
-                "1996", "Amerika", "www.dshds@denXerw.gr"));
-        actors.add(new Actors("2","Al", "Paccino",
-                "1983", "Puerto Riko", "www.jkha@denXerw.gr"));
-        actors.add(new Actors("3","Michalis", "Leventogiannis",
-                "1981", "Greece", "www.jgka@denXerw.gr"));
-        actors.add(new Actors("4","DenXerw", "Gerwrgiou",
-                "1932", "Greece", "www.hjagsh@denXerw.gr"));
-        actors.add(new Actors("5","Elena", "Aloumani",
-                "1996", "Marousi", "www.hgakas@denXerw.gr"));
+        actors.add(new Actors("1","Brad", "Pitt",
+                "1963", "USA", "www.dshds@denXerw.gr"));
+        actors.add(new Actors("2","Al", "Pacino",
+                "1970", "New York City", "www.jkha@denXerw.gr"));
+        actors.add(new Actors("3","Leonardo", "Dicaprio",
+                "1974", "Greece", "www.jgka@denXerw.gr"));
+        actors.add(new Actors("4","Elisabeth", "Moss",
+                "1982", "USA", "www.hjagsh@denXerw.gr"));
+        actors.add(new Actors("5","Bob", "Odenkirk",
+                "1962", "USA", "www.hgakas@denXerw.gr"));
         return actors;
     }
 
     public ArrayList<Directors> getDirectors(){
         ArrayList<Directors> directors = new ArrayList<Directors>();
-        directors.add(new Directors("1","Alexandros", "Papakaliatis",
-                "1983", "Papakaliatis", "www.dshds@denXerw.gr"));
-        directors.add(new Directors("2","Manwlis", "Manousakis",
-                "1971", "Greece", "www.jkha@denXerw.gr"));
-        directors.add(new Directors("3","David", "Fincher",
-                "1937", "Germany", "www.jkjkbjka@denXerw.gr"));
-        directors.add(new Directors("4","Stanley", "Cubrik",
-                "1988", "USA", "www.hjkkkh@denXerw.gr"));
-        directors.add(new Directors("5","Filippos", "Nathanil",
-                "1948", "USA", "www.hkkhosdi@denXerw.gr"));
+        directors.add(new Directors("1","David", "Fincher",
+                "1962", "Colorado", "www.dshds@denXerw.gr"));
+        directors.add(new Directors("2","Quentin", "Tarantino",
+                "1963", "Noxvil", "www.jkha@denXerw.gr"));
+        directors.add(new Directors("3","Christopher", "Nolan",
+                "1970", "England", "www.jkjkbjka@denXerw.gr"));
+        directors.add(new Directors("4","Michelle", "MacLaren",
+                "1965", "USA", "www.hjkkkh@denXerw.gr"));
+        directors.add(new Directors("5","Stanley", "Kubrick",
+                "1928", "USA", "www.hkkhosdi@denXerw.gr"));
         return directors;
     }
     public ArrayList<Movie> getMovies(){
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("1", "Interstellar", new ArrayList<String>(){{add("Genre1"); add("Genre2"); add("Genre3");}},
-                "2001", "USA", "Kwstas Papakaliatis",
-                new ArrayList<String>(){{add("Actor1"); add("Actor2"); add("Actor3");}}));
-        movies.add(new Movie("2", "Indiana Jones", new ArrayList<String>(){{add("Genre2"); add("Genre4");}},
-                "2000", "USA", "Manwlis Manousakis",
-                new ArrayList<String>(){{add("Actor7"); add("Actor8"); add("Actor9");}}));
-        movies.add(new Movie("3", "Barbie", new ArrayList<String>(){{add("Genre3"); add("Genre7"); add("Genre8");}},
-                "2023", "USA", "David Fincher",
-                new ArrayList<String>(){{add("Actor3"); add("Actor9"); add("Actor12");}}));
+        movies.add(new Movie("1", "Fight Club", new ArrayList<String>(){{add("Drama");}},
+                "1999", "USA", "David Fincher",
+                new ArrayList<String>(){{add("Brad Pitt"); add("Edward Norton"); add("Zach Grenier");}}));
+        movies.add(new Movie("2", "Pulp Fiction", new ArrayList<String>(){{add("Crime"); add("Drama");}},
+                "1994", "USA", "Quentin Tarantino",
+                new ArrayList<String>(){{add("John Travolta"); add("Uma Thurman"); add("Samuel Jackson");}}));
+        movies.add(new Movie("3", "Inception", new ArrayList<String>(){{add("Action"); add("Adventure"); add("Sci-Fi");}},
+                "2010", "USA", "Christopher Nolan",
+                new ArrayList<String>(){{add("Leonardo Dicaprio"); add("Elliot Page"); add("Ken Watanabe");}}));
         return movies;
     }
 
     public ArrayList<Series> getSeries(){
         ArrayList<Series> series = new ArrayList<Series>();
-        series.add(new Series("1", "Breaking Bad", new ArrayList<String>(){{add("Genre1"); add("Genre2"); add("Genre3");}},
-                "2001", "USA", "Kwstas Papakaliatis",
-                new ArrayList<String>(){{add("Actor1"); add("Actor2"); add("Actor3");}},
-                3, new ArrayList<Integer>(){{add(1); add(2); add(3);}}, "2007"));
-        series.add(new Series("2", "Sons of Anarchy", new ArrayList<String>(){{add("Genre5"); add("Genre4"); add("Genre3");}},
-                "1999", "USA", "Director 2",
-                new ArrayList<String>(){{add("Actor5"); add("Actor5"); add("Actor7");}},
-                3, new ArrayList<Integer>(){{add(10); add(4); add(7);}}, "2003"));
-        series.add(new Series("3", "Better Call Saul", new ArrayList<String>(){{add("Genre5"); add("Genre8"); add("Genre11");}},
-                "1991", "USA", "Director3",
-                new ArrayList<String>(){{add("Actor1"); add("Actor2"); add("Actor3");}},
-                3, new ArrayList<Integer>(){{add(13); add(4); add(9);}}, "2001"));
+        series.add(new Series("1", "Breaking Bad", new ArrayList<String>(){{add("Crime"); add("Drama"); add("Thriller");}},
+                "2008", "USA", "Michelle MacLaren",
+                new ArrayList<String>(){{add("Bryan Cranston"); add("Anna Gunn"); add("Aaron Paul");}},
+                5, new ArrayList<Integer>(){{add(7); add(13); add(13); add(13); add(16);}}, "2013"));
+        series.add(new Series("2", "Mad Men", new ArrayList<String>(){{add("Drama");}},
+                "2007", "USA", "Matthew Weiner",
+                new ArrayList<String>(){{add("John Hamm"); add("Elizabeth Moss"); add("Vincent Kartheiser");}},
+                3, new ArrayList<Integer>(){{add(13); add(13); add(13);}}, "2015"));
+        series.add(new Series("3", "Better Call Saul", new ArrayList<String>(){{add("Crime"); add("Drama");}},
+                "2015", "USA", "Michelle MacLaren",
+                new ArrayList<String>(){{add("Bob Odenkirk"); add("Rhea Seehorn"); add("Jonathan Banks");}},
+                6, new ArrayList<Integer>(){{add(10); add(10); add(10); add(10); add(10); add(13);}}, "2022"));
 
         return series;
     }
 
+    public ArrayList<MiniSeries> getMiniSeries(){
+        ArrayList<MiniSeries> miniSeries = new ArrayList<MiniSeries>();
+        miniSeries.add(new MiniSeries("1", "Chernobyl", new ArrayList<String>(){{add("Drama"); add("History"); add("Thriller");}},
+                "2019", "USA", "Craig Mazin",
+                new ArrayList<String>(){{add("Jessie Buckley"); add("Jared Harris"); add("Stellan Skarsgard");}},
+                1, new ArrayList<Integer>(){{add(5);}}, "2019"));
+        miniSeries.add(new MiniSeries("2", "1883", new ArrayList<String>(){{add("Drama"); add("Western");}},
+                "2021", "USA", "Taylor Sheridan",
+                new ArrayList<String>(){{add("Sam Elliot"); add("Faith Hill"); add("Isabel May");}},
+                1, new ArrayList<Integer>(){{add(10);}}, "2022"));
+        miniSeries.add(new MiniSeries("3", "The Haunting of Hill House", new ArrayList<String>(){{add("Drama"); add("Horror"); add("Mystery");}},
+                "2018", "USA", "Mike Flanagan",
+                new ArrayList<String>(){{add("Michiel Huisman"); add("Carla Gugino"); add("Henry Thomas");}},
+                1, new ArrayList<Integer>(){{add(10);}}, "2018"));
 
+        return miniSeries;
+    }
 
 
 
