@@ -57,6 +57,7 @@ public class It2021078 {
                                            
                                             System.out.println(Data.getMoviesList());
                                             System.out.println(Data.getSeriesList());
+                                            System.out.println(Data.getMiniSeriesList());
                                             System.out.println(Data.getDirectorsList());
                                             System.out.println(Data.getActorsList());
                                             

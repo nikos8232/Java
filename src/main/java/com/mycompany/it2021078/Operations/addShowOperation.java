@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.it2021078.Operations;
 import com.mycompany.it2021078.Constants.Messages;
 import com.mycompany.it2021078.Model.Data;
@@ -9,20 +6,18 @@ import com.mycompany.it2021078.Model.Shows.Movie;
 import com.mycompany.it2021078.Model.Shows.Shows;
 import com.mycompany.it2021078.Model.People.Directors;
 import com.mycompany.it2021078.Model.People.Actors;
+import com.mycompany.it2021078.Model.Shows.MiniSeries;
 import com.mycompany.it2021078.Model.Shows.Series;
 import com.mycompany.it2021078.Utils.entriesValidation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 import java.time.LocalDate;
-/**
- *
- * @author nik
- */
 import java.util.Scanner;
+
 public class addShowOperation {
 
-    public ArrayList<String> genres_list;
+    
 
     public void InsertShow(Data data){
         
@@ -32,22 +27,24 @@ public class addShowOperation {
         // Print add Show menu choices to add one type of show
         System.out.println(Messages.CHOOSE_SHOW_TYPE);
         
-        String user_choice = answer.nextLine();  // Read user input
+        // Read user input
+        String user_choice = answer.nextLine();  
         
         switch(user_choice) {
 
-                        case "1" -> { addShowFunctionality(user_choice);}
+                        case "1" -> { addShowFunctionality(user_choice);
+                                             System.out.println(Data.getMoviesList());
+                                           }
 
                         case "2" -> { addShowFunctionality(user_choice);
-                             
+                                            System.out.println(Data.getSeriesList());
+                                            }
 
-            }
-
-                        case "3" -> {
-                            
-            }
-                       default -> {
-            }
+                        case "3" -> { addShowFunctionality(user_choice);
+                                             System.out.println(Data.getMiniSeriesList());
+                                            }
+                        
+                       default -> {System.out.println("asdasd");}
                      
          }
         
@@ -57,6 +54,7 @@ public class addShowOperation {
     public void addShowFunctionality(String userChoice){
         
         String releaseYear = ""; 
+        String genreChoice = "" ;
         String  director_name = "";
         String director_surname = "";
         String  director_id = "";
@@ -67,58 +65,69 @@ public class addShowOperation {
         String show_id = "";
         Shows show = null;
         ArrayList<Integer> episodesOfSeasons = new ArrayList<>();
+        ArrayList<String> genres_list = new ArrayList<>();
         
-        entriesValidation checkDuplicatesEntries = new entriesValidation();
-       
-         if ("1".equals(userChoice)) {
-             ArrayList<Movie> showList = Data.getMoviesList();
-             show =  new Movie();
-             showList.add((Movie) show);
-             System.out.println("mesa1");                        
-         } else if ("2".equals(userChoice)) {
-              ArrayList<Series> showList = Data.getSeriesList();
-             show = new Series();
-             showList.add((Series) show);
-             System.out.println("mesa2");        
-         } else if ("3".equals(userChoice)) {
-             ArrayList<Series> showList = Data.getSeriesList();
-             show =  new Series();
-             showList.add((Series) show);
-             System.out.println("mesa3");        
-         }
         Scanner answer = new Scanner(System.in);
         int currentYear = LocalDate.now().getYear();
-        String genreChoice ;
+        
         
         ArrayList<Directors> directorsList = Data.getDirectorsList();
         ArrayList<Actors> actorsList = Data.getActorsList();
         ArrayList<String>  actors_array_list = new ArrayList<>();
       
         
+        // Create an object to validate if director or actor already exists
+        entriesValidation checkDuplicatesEntries = new entriesValidation();
+       
         
+        // Check user's choice to initiate object  (Movie, Serie, Mini Serie)  and List
+         if ("1".equals(userChoice)) { // User Choice to add movie
+             
+             ArrayList<Movie> showList = Data.getMoviesList();
+             show =  new Movie();
+             showList.add((Movie) show);
+                                 
+         } else if ("2".equals(userChoice)) {// User Choice to add serie
+             
+             ArrayList<Series> showList = Data.getSeriesList();
+             show = new Series();
+             showList.add((Series) show);
+                
+         } else if ("3".equals(userChoice)) {// User Choice to add mini serie
+             
+             ArrayList<MiniSeries> showList = Data.getMiniSeriesList();
+             show =  new MiniSeries();
+             showList.add((MiniSeries) show);
+                  
+         }
+         
+         
         // Insert movie title
         while(show.getTitle() == null || show.getTitle().isEmpty()){
             System.out.println(Messages.INSERT_SHOW_TITLE);                        
             show.setTitle(answer.nextLine());
         }
 
-
+        System.out.println(show.getClass().getSimpleName());
+        
         // Insert movie release year
         while(show.getYear1() == null || show.getYear1().isEmpty()){
             System.out.println(Messages.INSERT_SHOW_RELEASE_YEAR);
             releaseYear = answer.nextLine();
             try{
-                if(Integer.parseInt(releaseYear) <= currentYear){
+                if(Integer.parseInt(releaseYear) <= currentYear || Integer.parseInt(releaseYear) > 1500 ){
                     show.setyear1(releaseYear);
                 }
             }catch(NumberFormatException e){
-                System.out.println("wrong year");
+                System.out.println("Wrong year");
             }    
         }
 
-        while(show.getGenre() == null || show.getGenre().isEmpty() || show.getGenre().size() <=3){
+        
+        // Insert movie genres
+        while(show.getGenre() == null || show.getGenre().isEmpty()){
 
-            // Insert movie genres
+            
             System.out.println(Messages.INSERT_SHOW_GENRE);
 
             // Replace all space (maybe function for that)
@@ -126,8 +135,14 @@ public class addShowOperation {
 
             // Convert user Strinf input to list
             genres_list = new ArrayList<String>(Arrays.asList(genreChoice.split(",") ));
-            show.setGenre(genres_list);
-
+            
+            // Check user input to be lower or equal than 3 genres
+            if(genres_list.size() <=3){
+                show.setGenre(genres_list);
+            }else{
+                System.out.println(Messages.MAXIMUM_GENRES);
+            }
+            
         }
 
         // Insert movie country of production
@@ -136,40 +151,72 @@ public class addShowOperation {
             show.setProdCountry(answer.nextLine());
         }
         
-        if ("2".equals(userChoice) || "3".equals(userChoice)) {
-            Series series = (Series) show;
-            // Insert movie country of production
+         // Check if user want to add Serie or Mini Serie to 1. Cast object Show as Serie or Mini Serie 2. To add number of Seasons
+        if("2".equals(userChoice)){
+             //series = new Series();
+             Series series = (Series) show;
+             // Insert movie country of production
             while( series.getSeasons() == 0 ){
                 System.out.println("Insert Number Of Seasons");
                 series.setSeasons(answer.nextInt());
             }
-            
-            
+
+
             for (int i = 1; i <= series.getSeasons(); i++) {
                 int tempEpisodes = -1;
                 while( tempEpisodes == -1){
                     System.out.println("Insert Episodes Of Season " + i);
                     tempEpisodes = answer.nextInt();
                     episodesOfSeasons.add(tempEpisodes);
-                    
+
                 }
-                
+
             }
             series.setEpisodes(episodesOfSeasons);
-            
+
             while(series.getYearLast() == null || series.getYearLast().isEmpty()){
                 System.out.println("Last Year Of Serie");
                 series.setYearLast(answer.nextLine());
             }
-            
+
+        }else if ("3".equals(userChoice)){
+            //series = new MiniSeries();
+            MiniSeries series = (MiniSeries) show;
+
+             // Insert movie country of production
+            while( series.getSeasons() == 0 ){
+                System.out.println("Insert Number Of Seasons");
+                series.setSeasons(answer.nextInt());
+            }
+
+
+            for (int i = 1; i <= series.getSeasons(); i++) {
+                int tempEpisodes = -1;
+                while( tempEpisodes == -1){
+                    System.out.println("Insert Episodes Of Season " + i);
+                    tempEpisodes = answer.nextInt();
+                    episodesOfSeasons.add(tempEpisodes);
+
+                }
+
+            }
+            series.setEpisodes(episodesOfSeasons);
+
+            while(series.getYearLast() == null || series.getYearLast().isEmpty()){
+                System.out.println("Last Year Of Serie");
+                series.setYearLast(answer.nextLine());
+            }
+
         }
+
         
         while(director_name.isEmpty()){
             // Insert movie director name
             System.out.println(Messages.INSERT_SHOW_DIRECTOR_NAME);
             director_name = answer.nextLine();
         }   
-            // Insert movie director surname
+        
+        // Insert movie director surname
         while(director_surname.isEmpty()){
             System.out.println(Messages.INSERT_SHOW_DIRECTOR_SURNAME);
             director_surname = answer.nextLine();
