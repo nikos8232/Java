@@ -16,7 +16,8 @@ public class Messages {
                                         *******  Press 2 To Update Show Infos  ****** 
                                         *******  Press 3 To Search Shows  ****** 
                                         *******  Press 4 To Search Actors/Directors  ****** 
-                                        *******  Press 5 To Sign Up  ****** """;
+                                        *******  Press 5 To View Ratings  ******
+                                        *******  Press 6 To Sign Up  ******""";
     
     
     public static final  String CHOOSE_SHOW_TYPE = """
@@ -101,7 +102,14 @@ public class Messages {
     public static final  String STOP_ADD_ACTORS = "if you want to stop press: 0 if you want to continue press: 1";
     public static final  String BACK_TO_THE_MENU = "Type 0 to go back to the menu";
     public static final  String LAST_ENTRY = "Last entry!!!";
-    
+    public static final  String WRONG_INPUT = "Wrong INPUT! Please try again!!!";
 
+    // ****************  Search    ****************
+
+    public static final String SEARCH_SHOW_OPTIONS = "Press 1 to Search by Show Name or 2 by Release Year";
+    public static final String ENTER_TITLE = "Enter title.";
+    public static final String ENTER_YEAR = "Enter Year";
+    public static final String RATE_QUESTION = "Type Title to rate or No to get back to menu";
+    public static final String RATE_1_TO_10 = "Rate 1 to 10!";
     
 }

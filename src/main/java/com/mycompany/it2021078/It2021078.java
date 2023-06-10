@@ -38,6 +38,7 @@ public class It2021078 {
         addShowOperation addShowOperation = new addShowOperation();
         
         //searchShowOperation searchShowOperation - new searchShowOperation();
+        searchShowOperation searchShowOperation = new searchShowOperation();
         
         
         while(true){
@@ -61,13 +62,25 @@ public class It2021078 {
                 }
 
                         case "3" -> {
-                }
+                            ArrayList shows = searchShowOperation.SearchShow();
+                            if(shows.size() == 0){System.out.println("No results for your search!!!");}
+                            else{
+                                while(searchShowOperation.RateShow(shows, 0)){}
+                            }
+
+                        }
+
 
                         case "4" -> {
                 }
 
                         case "5" -> {
-                }
+                            ArrayList shows = searchShowOperation.SearchShow();
+                            if(shows.size() == 0){System.out.println("No results for your search!!!");}
+                            else{
+                                while(searchShowOperation.ShowRates(shows)){}
+                            }
+                        }
 
                         case "6" -> {
                                             System.out.println("**********");
