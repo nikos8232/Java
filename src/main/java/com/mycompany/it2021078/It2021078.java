@@ -6,6 +6,7 @@
 package com.mycompany.it2021078;
 import com.mycompany.it2021078.Constants.AsciiArt;
 import com.mycompany.it2021078.Constants.Messages;
+import com.mycompany.it2021078.Operations.accountOperation;
 import com.mycompany.it2021078.Operations.addShowOperation;
 import com.mycompany.it2021078.Operations.searchShowOperation;
 import com.mycompany.it2021078.Model.Accounts.Accounts;
@@ -33,12 +34,18 @@ public class It2021078 {
 //        ArrayList<Accounts> accountsList = new ArrayList<Accounts>();
         Data data = new Data();
         data.initiateDataArrays();
+
+        ArrayList<Accounts> accounts = new ArrayList<Accounts>();
+
+        String userLoggedIn = "";
         
         // Create new object addShowOperation 
         addShowOperation addShowOperation = new addShowOperation();
         
         //searchShowOperation searchShowOperation - new searchShowOperation();
         searchShowOperation searchShowOperation = new searchShowOperation();
+
+        accountOperation accountOperation = new accountOperation();
         
         
         while(true){
@@ -82,18 +89,19 @@ public class It2021078 {
                             }
                         }
 
-                        case "6" -> {
-                                            System.out.println("**********");
-                                           
-                                            System.out.println(Data.getMoviesList());
-                                            System.out.println(Data.getSeriesList());
-                                            System.out.println(Data.getMiniSeriesList());
-                                            System.out.println(Data.getDirectorsList());
-                                            System.out.println(Data.getActorsList());
+                        case "6" -> { accountOperation.Register(accounts);
+
 
                 }
 
                        default -> {
+                           System.out.println("**********");
+
+                           System.out.println(Data.getMoviesList());
+                           System.out.println(Data.getSeriesList());
+                           System.out.println(Data.getMiniSeriesList());
+                           System.out.println(Data.getDirectorsList());
+                           System.out.println(Data.getActorsList());
                 }
                        // code block
               }

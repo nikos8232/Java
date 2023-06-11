@@ -111,5 +111,11 @@ public class Messages {
     public static final String ENTER_YEAR = "Enter Year";
     public static final String RATE_QUESTION = "Type Title to rate or No to get back to menu";
     public static final String RATE_1_TO_10 = "Rate 1 to 10!";
-    
+
+    // ****************  Accounts    ****************
+
+    public static final String ASK_USERNAME = "Please enter your Username:";
+
+    public static final String ASK_PASSWORD = "Please enter Password:";
+    public static final String ASK_EMAIL = "Please enter Email:";
 }
