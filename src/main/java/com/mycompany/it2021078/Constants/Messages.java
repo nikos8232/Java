@@ -16,8 +16,14 @@ public class Messages {
                                         *******  Press 2 To Update Show Infos  ****** 
                                         *******  Press 3 To Search Shows  ****** 
                                         *******  Press 4 To Search Actors/Directors  ****** 
-                                        *******  Press 5 To View Ratings  ******
-                                        *******  Press 6 To Sign Up  ******""";
+                                        *******  Press 5 To View Ratings  ******""";
+
+    public static final  String MENU_REGISTER = "*******  Press 6 To Sign Up  ******";
+
+    public static final  String MENU_LOGIN = "*******  Press 7 To Log In  ******";
+
+    public static final  String MENU_LOGOUT = "*******  Press 6 To Log Out  ******";
+
     
     
     public static final  String CHOOSE_SHOW_TYPE = """

@@ -5,6 +5,7 @@
 package com.mycompany.it2021078.Operations;
 
 import com.mycompany.it2021078.Constants.Messages;
+import com.mycompany.it2021078.Model.Accounts.Accounts;
 import com.mycompany.it2021078.Model.Data;
 import com.mycompany.it2021078.Model.Shows.MiniSeries;
 import com.mycompany.it2021078.Model.Shows.Movie;
@@ -104,13 +105,26 @@ public class searchShowOperation {
         }
         return results;
     }
-    public boolean RateShow(ArrayList<ArrayList<String>> shows, int reason){
+    public boolean RateShow(ArrayList<ArrayList<String>> shows, int reason,String isLoggedIn, ArrayList<Accounts> accounts){
         int rateNum;
         boolean flag = true;
+        accountOperation accountOperation = new accountOperation();
         System.out.println(Messages.RATE_QUESTION);
         Scanner answer = new Scanner(System.in);
         String user_choice = answer.nextLine();
         if(!(user_choice.compareToIgnoreCase("NO")== 0)){
+            if(isLoggedIn == ""){
+                System.out.println("You need to log in (press 1) or Register (press 2)");
+                user_choice = answer.nextLine();
+                while(!user_choice.equals("1")  || !user_choice.equals("2")){
+                    System.out.println(Messages.WRONG_INPUT);
+                }
+                if(user_choice.equals("1")){
+                    accountOperation.Register(accounts);
+                }else{
+                    accountOperation.LogIn(accounts);
+                }
+            }
             while(flag) {
                 for (int i = 0; i < shows.size(); i++) {
                     if (shows.get(i).get(1).compareToIgnoreCase(user_choice) == 0) {
@@ -236,7 +250,7 @@ public class searchShowOperation {
         }
     }
 
-    public boolean ShowRates(ArrayList<ArrayList<String>> shows){
-        return RateShow(shows, 2);
+    public boolean ShowRates(ArrayList<ArrayList<String>> shows, String isLoggedIn, ArrayList<Accounts> accounts){
+        return RateShow(shows, 2, isLoggedIn, accounts);
     }
 }
