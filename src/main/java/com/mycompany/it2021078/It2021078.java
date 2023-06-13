@@ -57,6 +57,12 @@ public class It2021078 {
                 
                 // Print menu choices to do actions
                 System.out.println(Messages.MENU);
+                if(userLoggedIn == "") {
+                    System.out.println(Messages.MENU_REGISTER);
+                    System.out.println(Messages.MENU_LOGIN);
+                }else {
+                    System.out.println(Messages.MENU_LOGOUT);
+                }
                 
                 // Read user input
                 String user_choice = myObj.nextLine();  
@@ -72,27 +78,41 @@ public class It2021078 {
                             ArrayList shows = searchShowOperation.SearchShow();
                             if(shows.size() == 0){System.out.println("No results for your search!!!");}
                             else{
-                                while(searchShowOperation.RateShow(shows, 0)){}
+                                while(true){
+                                    userLoggedIn = searchShowOperation.RateShow(shows, 0, userLoggedIn, accounts);
+                                    if(userLoggedIn != "false" || userLoggedIn != "" ) {break;}
+                                    else{ userLoggedIn = "";}
+                                }
                             }
 
                         }
 
 
                         case "4" -> {
-                }
+                        }
 
                         case "5" -> {
                             ArrayList shows = searchShowOperation.SearchShow();
                             if(shows.size() == 0){System.out.println("No results for your search!!!");}
                             else{
-                                while(searchShowOperation.ShowRates(shows)){}
+                                while(true){
+                                    userLoggedIn = searchShowOperation.ShowRates(shows, userLoggedIn, accounts);
+                                    if(userLoggedIn != "false" || userLoggedIn != "" ) {break;}
+                                    else{ userLoggedIn = "";}
+                                }
+
                             }
                         }
-
-                        case "6" -> { accountOperation.Register(accounts);
-
-
-                }
+                        case "6" -> {
+                            if(userLoggedIn == "") {
+                                userLoggedIn = accountOperation.Register(accounts);
+                            }else{
+                                userLoggedIn = "";
+                            }
+                        }
+                        case "7" -> {
+                            userLoggedIn = accountOperation.LogIn(accounts);
+                        }
 
                        default -> {
                            System.out.println("**********");

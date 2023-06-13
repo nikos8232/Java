@@ -20,4 +20,29 @@ public class accountOperation {
         return username;
 
     }
+
+    public String LogIn(ArrayList<Accounts> accounts){
+        if(accounts.isEmpty()){
+            System.out.println("No accounts registered yet");
+            return "";
+        }
+        Scanner answer = new Scanner(System.in);
+        while(true) {
+            System.out.println(Messages.ASK_USERNAME);
+            String username = answer.nextLine();
+            System.out.println(Messages.ASK_PASSWORD);
+            String password = answer.nextLine();
+            for (int i = 0; i < accounts.size(); i++) {
+                if (accounts.get(i).getUsername().equals(username) && accounts.get(i).getPassword().equals(password)) {
+                    System.out.println("Successfully logged in!\nWelcome " + username);
+                    return username;
+                }
+            }
+            System.out.println("Wrong username or password. Want to try again? Yes or no?");
+            if (answer.nextLine().equalsIgnoreCase("NO")) {
+                break;
+            }
+        }
+        return "";
+    }
 }
