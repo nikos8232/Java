@@ -115,27 +115,36 @@ public class searchShowOperation {
         }
         return results;
     }
-    public boolean RateShow(ArrayList<ArrayList<String>> shows, int reason,String isLoggedIn, ArrayList<Accounts> accounts){
+    public boolean RateShow(ArrayList<ArrayList<String>> shows, int reason, Data data, ArrayList<Accounts> accounts){
         int rateNum;
         boolean flag = true;
         accountOperation accountOperation = new accountOperation();
         System.out.println(Messages.RATE_QUESTION);
         Scanner answer = new Scanner(System.in);
+        String result;
+        String newLogIn;
         String user_choice = answer.nextLine();
         if(!(user_choice.compareToIgnoreCase("NO")== 0)){
-            if(isLoggedIn == ""){
-                System.out.println("You need to log in (press 1) or Register (press 2)");
-                user_choice = answer.nextLine();
-                while(!user_choice.equals("1")  || !user_choice.equals("2")){
-                    System.out.println(Messages.WRONG_INPUT);
-                }
-                if(user_choice.equals("1")){
-                    accountOperation.Register(accounts);
-                }else{
-                    accountOperation.LogIn(accounts);
-                }
-            }
             while(flag) {
+                if(Data.getIsLoggedIn().equals("")) {
+                    System.out.println("Press 1 to log in or 2 to Register");
+                    newLogIn = answer.nextLine();
+                    while (!newLogIn.equals("1") && !newLogIn.equals("2")) {
+                        System.out.println(Messages.WRONG_INPUT);
+                        newLogIn = answer.nextLine();
+                    }
+                    if (newLogIn.equals("1")) {
+                        result = accountOperation.LogIn(accounts);
+                    } else {
+                        result = accountOperation.Register(accounts);
+                    }
+                    if (result.equals("")) {
+                        flag = false;
+                        break;
+                    } else {
+                        data.setIsLoggedIn(result);
+                    }
+                }
                 for (int i = 0; i < shows.size(); i++) {
                     if (shows.get(i).get(1).compareToIgnoreCase(user_choice) == 0) {
                         if (shows.get(i).get(2).equals("1")) {
@@ -260,8 +269,8 @@ public class searchShowOperation {
         }
     }
 
-    public boolean ShowRates(ArrayList<ArrayList<String>> shows, String isLoggedIn, ArrayList<Accounts> accounts){
-        return RateShow(shows, 2, isLoggedIn, accounts);
+    public boolean ShowRates(ArrayList<ArrayList<String>> shows, Data data, ArrayList<Accounts> accounts){
+        return RateShow(shows, 2, data, accounts);
     }
     
     

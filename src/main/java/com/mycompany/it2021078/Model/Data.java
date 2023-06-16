@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class Data {
     
-    //static ArrayList<Shows> showsList;
+    static String isLoggedIn;
     static ArrayList<Movie> moviesList;
     static ArrayList<Directors> directorsList;
     static ArrayList<Actors> actorsList;
@@ -46,7 +46,9 @@ public class Data {
 //    public static ArrayList<Shows> getShowsList() {
 //        return showsList;
 //    }
-    
+    public static String getIsLoggedIn() {
+        return isLoggedIn;
+    }
     public static ArrayList<Movie> getMoviesList() {
         return moviesList;
     }
@@ -71,7 +73,10 @@ public class Data {
 //    public void setShowsList(ArrayList<Shows> showsList) {
 //        this.showsList = showsList;
 //    }
-    
+
+    public void setIsLoggedIn (String isLoggedIn){
+        this.isLoggedIn = isLoggedIn;
+    }
     public void setMoviesList(ArrayList<Movie> moviesList) {
         this.moviesList = moviesList;
     }
