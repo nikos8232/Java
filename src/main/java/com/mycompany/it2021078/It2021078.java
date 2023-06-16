@@ -37,7 +37,7 @@ public class It2021078 {
 
         ArrayList<Accounts> accounts = new ArrayList<Accounts>();
 
-        String userLoggedIn = "";
+        data.setIsLoggedIn("");
         
         // Create new object addShowOperation 
         addShowOperation addShowOperation = new addShowOperation();
@@ -56,7 +56,7 @@ public class It2021078 {
                 
                 // Print menu choices to do actions
                 System.out.println(Messages.MENU);
-                if(userLoggedIn == "") {
+                if(Data.getIsLoggedIn() == "") {
                     System.out.println(Messages.MENU_REGISTER);
                     System.out.println(Messages.MENU_LOGIN);
                 }else {
@@ -77,11 +77,7 @@ public class It2021078 {
                             ArrayList shows = searchShowOperation.SearchShow();
                             if(shows.size() == 0){System.out.println("No results for your search!!!");}
                             else{
-                                while(true){
-                                    userLoggedIn = searchShowOperation.RateShow(shows, 0, userLoggedIn, accounts);
-                                    if(userLoggedIn != "false" || userLoggedIn != "" ) {break;}
-                                    else{ userLoggedIn = "";}
-                                }
+                                while(searchShowOperation.RateShow(shows, 0, data, accounts)){}
                             }
 
                         }
@@ -94,23 +90,18 @@ public class It2021078 {
                             ArrayList shows = searchShowOperation.SearchShow();
                             if(shows.size() == 0){System.out.println("No results for your search!!!");}
                             else{
-                                while(true){
-                                    userLoggedIn = searchShowOperation.ShowRates(shows, userLoggedIn, accounts);
-                                    if(userLoggedIn != "false" || userLoggedIn != "" ) {break;}
-                                    else{ userLoggedIn = "";}
-                                }
-
+                                while(searchShowOperation.ShowRates(shows, data, accounts)){}
                             }
                         }
                         case "6" -> {
-                            if(userLoggedIn == "") {
-                                userLoggedIn = accountOperation.Register(accounts);
+                            if(Data.getIsLoggedIn() == "") {
+                                data.setIsLoggedIn(accountOperation.Register(accounts));
                             }else{
-                                userLoggedIn = "";
+                                data.setIsLoggedIn("");
                             }
                         }
                         case "7" -> {
-                            userLoggedIn = accountOperation.LogIn(accounts);
+                            data.setIsLoggedIn(accountOperation.LogIn(accounts));
                         }
 
                        default -> {
