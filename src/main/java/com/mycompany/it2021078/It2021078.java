@@ -32,7 +32,7 @@ public class It2021078 {
 //        ArrayList<Directors> directorsList = new ArrayList<Directors>();
 //        ArrayList<Actors> actorsList = new ArrayList<Actors>();
 //        ArrayList<Accounts> accountsList = new ArrayList<Accounts>();
-        Data data = new Data(new ArrayList<>(),new ArrayList<>(),new ArrayList<>(),new ArrayList<>(),new ArrayList<>());
+        Data data = new Data();
         data.initiateDataArrays();
 
         ArrayList<Accounts> accounts = new ArrayList<Accounts>();
@@ -42,9 +42,13 @@ public class It2021078 {
         // Create new object addShowOperation 
         addShowOperation addShowOperation = new addShowOperation();
         
+
         searchShowOperation searchShowOperation = new searchShowOperation();
 
         accountOperation accountOperation = new accountOperation();
+
+        //searchShowOperation searchShowOperation - new searchShowOperation();
+
         
         
         while(true){
@@ -70,7 +74,7 @@ public class It2021078 {
 
                         case "1" -> addShowOperation.InsertShow(data);
 
-                        case "2" -> { 
+                        case "2" -> { searchShowOperation.SearchAndEditShow(data);
                 }
 
                         case "3" -> {

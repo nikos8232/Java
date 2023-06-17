@@ -8,22 +8,26 @@ import com.mycompany.it2021078.Model.People.Directors;
 import com.mycompany.it2021078.Model.People.Actors;
 import com.mycompany.it2021078.Model.Shows.MiniSeries;
 import com.mycompany.it2021078.Model.Shows.Series;
+import com.mycompany.it2021078.Utils.UniqueIdGenerator;
 import com.mycompany.it2021078.Utils.entriesValidation;
+import static com.mycompany.it2021078.Utils.entriesValidation.validLastYearOfSerie;
+import static com.mycompany.it2021078.Utils.entriesValidation.validDate;
+import static com.mycompany.it2021078.Utils.inputHandler.getIntInput;
+import static com.mycompany.it2021078.Utils.inputHandler.getStringInput;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.UUID;
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class addShowOperation {
+    
+    String show_id;
+    UniqueIdGenerator uniqueIdGenerator = new UniqueIdGenerator();
 
     
-
+   
     public void InsertShow(Data data){
         
         Scanner answer = new Scanner(System.in);
-
-       
         // Print add Show menu choices to add one type of show
         System.out.println(Messages.CHOOSE_SHOW_TYPE);
         
@@ -32,16 +36,28 @@ public class addShowOperation {
         
         switch(user_choice) {
 
-                        case "1" -> { addShowFunctionality(user_choice);
-                                             System.out.println(Data.getMoviesList());
+                        case "1" -> { Movie movie = new Movie();
+                                            
+                                            show_id = uniqueIdGenerator.UniqueIdGenerator( "Movies");
+                                            ArrayList<Movie> showList = Data.getMoviesList();
+                                            addShowFunctionality(movie, user_choice, show_id, showList);
+                                            System.out.println(Data.getMoviesList());
                                            }
 
-                        case "2" -> { addShowFunctionality(user_choice);
+                        case "2" -> { Series serie = new Series();
+                                            
+                                            show_id = uniqueIdGenerator.UniqueIdGenerator( "Series");
+                                            ArrayList<Series> showList = Data.getSeriesList();
+                                            addShowFunctionality(serie, user_choice, show_id,showList);
                                             System.out.println(Data.getSeriesList());
                                             }
 
-                        case "3" -> { addShowFunctionality(user_choice);
-                                             System.out.println(Data.getMiniSeriesList());
+                        case "3" -> { MiniSeries miniSerie = new MiniSeries();
+                                           
+                                            show_id = uniqueIdGenerator.UniqueIdGenerator( "MiniSeries");
+                                            ArrayList<MiniSeries> showList = Data.getMiniSeriesList();
+                                            addShowFunctionality(miniSerie, user_choice, show_id,showList);
+                                            System.out.println(Data.getMiniSeriesList());
                                             }
                         
                        default -> {System.out.println("asdasd");}
@@ -51,317 +67,298 @@ public class addShowOperation {
         
     }
     
-    public void addShowFunctionality(String userChoice){
-        
-        String releaseYear = ""; 
-        String genreChoice = "" ;
-        String  director_name = "";
-        String director_surname = "";
-        String  director_id = "";
-        String director_full_name = "";
-        String actor_name = "";
-        String actor_surname = "";
-        String  actor_id = "";
-        String show_id = "";
-        Shows show = null;
-        ArrayList<Integer> episodesOfSeasons = new ArrayList<>();
-        ArrayList<String> genres_list = new ArrayList<>();
-        
-        Scanner answer = new Scanner(System.in);
-        int currentYear = LocalDate.now().getYear();
-        
-        
-        ArrayList<Directors> directorsList = Data.getDirectorsList();
-        ArrayList<Actors> actorsList = Data.getActorsList();
-        ArrayList<String>  actors_array_list = new ArrayList<>();
-      
-        
-        // Create an object to validate if director or actor already exists
-        entriesValidation checkDuplicatesEntries = new entriesValidation();
-       
-        
-        // Check user's choice to initiate object  (Movie, Serie, Mini Serie)  and List
-         if ("1".equals(userChoice)) { // User Choice to add movie
-             
-             ArrayList<Movie> showList = Data.getMoviesList();
-             show =  new Movie();
-             showList.add((Movie) show);
-                                 
-         } else if ("2".equals(userChoice)) {// User Choice to add serie
-             
-             ArrayList<Series> showList = Data.getSeriesList();
-             show = new Series();
-             showList.add((Series) show);
+    
+
+    public <T> void addShowFunctionality(Shows show, String userChoice, String show_id, ArrayList<T> showList){    
+
+            int  releaseYear; 
+            int  lastYearOfSerie;
+            String genreChoice;
+            String  director_name = "";
+            String director_surname = "";
+            String  director_id;
+            String director_full_name;
+            String actor_name = "";
+            String actor_surname = "";
+            String  actor_id;
+            
+            
+            
+            ArrayList<Integer> episodesOfSeasons = new ArrayList<>();
+            ArrayList<String> genres_list = new ArrayList<>();
+            ArrayList<Directors> directorsList = Data.getDirectorsList();
+            ArrayList<Actors> actorsList = Data.getActorsList();
+            ArrayList<String>  actors_array_list = new ArrayList<>();
+
+            Scanner acceptString = new Scanner(System.in);
+            
+            // Create an object to validate if director or actor already exists
+            entriesValidation checkDuplicatesEntries = new entriesValidation();
+
+            // Insert movie title
+            while(show.getTitle() == null || show.getTitle().isEmpty()){ 
+                show.setTitle(getStringInput(Messages.INSERT_SHOW_TITLE));
+            }
+
+
+            // Insert movie release year
+            while(true){
+                releaseYear = getIntInput(Messages.INSERT_SHOW_RELEASE_YEAR);
+                if(validDate(releaseYear)){
+                        show.setyear1(releaseYear);
+                        break;
+                    }
+            }
+
+
+            // Insert movie genres
+            while(true){
+
+                // Replace all space (maybe function for that)
+                genreChoice = getStringInput(Messages.INSERT_SHOW_GENRE).replaceAll(" ", "");
                 
-         } else if ("3".equals(userChoice)) {// User Choice to add mini serie
-             
-             ArrayList<MiniSeries> showList = Data.getMiniSeriesList();
-             show =  new MiniSeries();
-             showList.add((MiniSeries) show);
-                  
-         }
-         
-         
-        // Insert movie title
-        while(show.getTitle() == null || show.getTitle().isEmpty()){
-            System.out.println(Messages.INSERT_SHOW_TITLE);                        
-            show.setTitle(answer.nextLine());
-        }
-
-        
-        // Insert movie release year
-        while(show.getYear1() == null || show.getYear1().isEmpty()){
-            System.out.println(Messages.INSERT_SHOW_RELEASE_YEAR);
-            releaseYear = answer.nextLine();
-            try{
-                if(Integer.parseInt(releaseYear) <= currentYear || Integer.parseInt(releaseYear) > 1500 ){
-                    show.setyear1(releaseYear);
+                if (!genreChoice.isEmpty()){
+                   
+                    // Convert user Strinf input to list
+                    genres_list = new ArrayList<String>(Arrays.asList(genreChoice.split(",") ));
+                    
+                    // Check user input to be lower or equal than 3 genres
+                    if(genres_list.size() > 0 && genres_list.size() <=3){
+                        show.setGenre(genres_list);
+                        break;
+                    }
+                
+                }else{
+                    System.out.println(Messages.MAXIMUM_GENRES);
                 }
-            }catch(NumberFormatException e){
-                System.out.println("Wrong year");
-            }    
-        }
-
-        
-        // Insert movie genres
-        while(show.getGenre() == null || show.getGenre().isEmpty()){
-
-            
-            System.out.println(Messages.INSERT_SHOW_GENRE);
-
-            // Replace all space (maybe function for that)
-            genreChoice = answer.nextLine().replaceAll(" ", ""); 
-
-            // Convert user Strinf input to list
-            genres_list = new ArrayList<String>(Arrays.asList(genreChoice.split(",") ));
-            
-            // Check user input to be lower or equal than 3 genres
-            if(genres_list.size() <=3){
-                show.setGenre(genres_list);
-            }else{
-                System.out.println(Messages.MAXIMUM_GENRES);
-            }
-            
-        }
-
-        // Insert movie country of production
-        while(show.getProdCountry() == null || show.getProdCountry().isEmpty()){
-            System.out.println(Messages.INSERT_SHOW_COUNTRY);
-            show.setProdCountry(answer.nextLine());
-        }
-        
-         // Check if user want to add Serie or Mini Serie to 1. Cast object Show as Serie or Mini Serie 2. To add number of Seasons
-        if("2".equals(userChoice)){
-             //series = new Series();
-             Series series = (Series) show;
-             // Insert movie country of production
-            while( series.getSeasons() == 0 ){
-                System.out.println("Insert Number Of Seasons");
-                series.setSeasons(answer.nextInt());
+                       
             }
 
+            // Insert movie country of production
+            while(show.getProdCountry() == null || show.getProdCountry().isEmpty()){
+                show.setProdCountry(getStringInput(Messages.INSERT_SHOW_COUNTRY));
+            }
 
-            for (int i = 1; i <= series.getSeasons(); i++) {
-                int tempEpisodes = -1;
-                while( tempEpisodes == -1){
-                    System.out.println("Insert Episodes Of Season " + i);
-                    tempEpisodes = answer.nextInt();
+            
+            // Check if user want to add Serie or Mini Serie to 1. Cast object Show as Serie or Mini Serie 2. To add number of Seasons
+            if("2".equals(userChoice)){
+                 //series = new Series();
+                 Series series = (Series) show;
+                 
+                 // Insert movie country of production
+                while( series.getSeasons() == 0 ){
+                    int a = getIntInput(Messages.INSERT_SERIES_SEASONS);
+                    series.setSeasons(a);
+                }
+
+
+                for (int i = 1; i <= series.getSeasons(); i++) {
+                    int tempEpisodes = 0;
+                    while(tempEpisodes == 0){
+                         tempEpisodes = getIntInput(String.format(Messages.INSERT_EPISODES_OF_SEASON, i));
+                    }
                     episodesOfSeasons.add(tempEpisodes);
+                }
+                series.setEpisodes(episodesOfSeasons);
+                
 
+                 // Insert movie release year
+                while(true){
+
+                    lastYearOfSerie = getIntInput(Messages.INSERT_LAST_YEAR);
+                    if(validLastYearOfSerie(show.getYear1(),lastYearOfSerie) && validDate(lastYearOfSerie)){
+                            series.setYearLast(lastYearOfSerie);
+                            break;
+                        }
                 }
 
-            }
-            series.setEpisodes(episodesOfSeasons);
 
-            while(series.getYearLast() == null || series.getYearLast().isEmpty()){
-                System.out.println("Last Year Of Serie");
-                series.setYearLast(answer.nextLine());
-            }
+            }else if ("3".equals(userChoice)){
+                
+                //series = new MiniSeries();
+                MiniSeries series = (MiniSeries) show;
 
-        }else if ("3".equals(userChoice)){
-            //series = new MiniSeries();
-            MiniSeries series = (MiniSeries) show;
-
-             // Insert movie country of production
-            while( series.getSeasons() == 0 ){
-                System.out.println("Insert Number Of Seasons");
-                series.setSeasons(answer.nextInt());
-            }
+                 // Insert movie country of production
+                while( series.getSeasons() == 0 ){
+                    int a = getIntInput(Messages.INSERT_SERIES_SEASONS);
+                    series.setSeasons(a);
+                }
 
 
-            for (int i = 1; i <= series.getSeasons(); i++) {
-                int tempEpisodes = -1;
-                while( tempEpisodes == -1){
-                    System.out.println("Insert Episodes Of Season " + i);
-                    tempEpisodes = answer.nextInt();
+                for (int i = 1; i <= series.getSeasons(); i++) {
+                    int tempEpisodes = 0;
+                    while(tempEpisodes == 0){
+                         tempEpisodes = getIntInput(String.format(Messages.INSERT_EPISODES_OF_SEASON, i));
+                    }
                     episodesOfSeasons.add(tempEpisodes);
-
                 }
+                series.setEpisodes(episodesOfSeasons);
+                
 
+                 // Insert movie release year
+                while(true){
+
+                    lastYearOfSerie = getIntInput(Messages.INSERT_LAST_YEAR);
+                    if(validLastYearOfSerie(show.getYear1(),lastYearOfSerie) && validDate(lastYearOfSerie)){
+                            series.setYearLast(lastYearOfSerie);
+                            break;
+                     }
+                }
+                
             }
-            series.setEpisodes(episodesOfSeasons);
 
-            while(series.getYearLast() == null || series.getYearLast().isEmpty()){
-                System.out.println("Last Year Of Serie");
-                series.setYearLast(answer.nextLine());
-            }
 
-        }
+             // Insert movie director name
+            while(director_name.isEmpty()){
+                director_name = getStringInput(Messages.INSERT_SHOW_DIRECTOR_NAME);
+            }   
 
-        
-        while(director_name.isEmpty()){
-            // Insert movie director name
-            System.out.println(Messages.INSERT_SHOW_DIRECTOR_NAME);
-            director_name = answer.nextLine();
-        }   
-        
-        // Insert movie director surname
-        while(director_surname.isEmpty()){
-            System.out.println(Messages.INSERT_SHOW_DIRECTOR_SURNAME);
-            director_surname = answer.nextLine();
-        }   
+            
+            // Insert movie director surname
+            while(director_surname.isEmpty()){
+                director_surname = getStringInput(Messages.INSERT_SHOW_DIRECTOR_SURNAME);
+            }   
+            
+            
             // Combine director first and last name to one to use later
             director_full_name = director_name + " " + director_surname;
-            
+
             show.setDirectorInfo(director_full_name);
-           
-
-         boolean isDirectorsPresent = checkDuplicatesEntries.isDirectorsPresent(directorsList, director_name, director_surname);  
-  
-
-        // If directors not add yet add more info about
-        if (!isDirectorsPresent) {
-
-            // Create new object director
-            Directors newDirector = new Directors();
-            
-            newDirector.setFName(director_name);
-            newDirector.setLName(director_surname);
-            
-            // Directors unique id
-            UUID uniqueDirectorId = UUID.randomUUID();
-
-            // Directors unique id
-            director_id = uniqueDirectorId.toString();
-            newDirector.setPeopleId(director_id);
 
 
-            // Insert movie director birth date
-            while(newDirector.getBirthDate()== null || newDirector.getBirthDate().isEmpty()){
-                System.out.println(Messages.INSERT_SHOW_DIRECTOR_BIRTH);
-                newDirector.setBirthDate(answer.nextLine());
-            }    
-
-            // Insert movie director country
-            while(newDirector.getBirthCountry()== null || newDirector.getBirthCountry().isEmpty()){
-                System.out.println(Messages.INSERT_SHOW_DIRECTOR_COUNTRY);
-                newDirector.setBirthCountry(answer.nextLine());
-            }
-            // Insert movie director website
-            System.out.println(Messages.INSERT_SHOW_DIRECTOR_WEBSITE);
-            newDirector.setWebsite(answer.nextLine());
+             boolean isDirectorsPresent = checkDuplicatesEntries.isDirectorsPresent(directorsList, director_name, director_surname);  
 
 
-            // Add new director object to ArrayList we have for themAQQQQQQQQQQQQQ
-            directorsList.add(newDirector);
+            // If directors not add yet add more info about
+            if (!isDirectorsPresent) {
 
-        } 
+                // Create new object director
+                Directors newDirector = new Directors();
 
-        while(true)
-        {
+                newDirector.setFName(director_name);
+                newDirector.setLName(director_surname);
 
-             // Create new director
-             Actors newActors = new Actors();
+                // Directors unique id
+                director_id = uniqueIdGenerator.UniqueIdGenerator( "Directors");
 
-            // Insert movie actor first name
-            while(newActors.getFName() == null || newActors.getFName().isEmpty()){
-                System.out.println(Messages.INSERT_SHOW_ACTOR_NAME);
-                actor_name = answer.nextLine();
-                newActors.setFName(actor_name);
-            }
+                newDirector.setPeopleId(director_id);
 
 
-            // Insert movie actor last name
-            while(newActors.getLName() == null ||newActors.getLName().isEmpty()){
-                System.out.println(Messages.INSERT_SHOW_ACTOR_SURNAME);
-                actor_surname = answer.nextLine();
-                newActors.setLName(actor_surname);
-            }
+                // Insert movie director birth date
+                while(true){
+                    int directorBirth = getIntInput(Messages.INSERT_SHOW_DIRECTOR_BIRTH);
+                    if(validDate(directorBirth)){
+                            show.setyear1(directorBirth);
+                            break;
+                      }
+                    
+                }   
 
 
-            // Combine actor first and last name to one to use later
-            String actor_full_name = newActors.getFName() + " " + newActors.getLName();
+                // Insert movie director country
+                while(newDirector.getBirthCountry()== null || newDirector.getBirthCountry().isEmpty()){
+                    System.out.println(Messages.INSERT_SHOW_DIRECTOR_COUNTRY);
+                    newDirector.setBirthCountry(acceptString.nextLine());
+                }
+                
+                // Insert movie director website
+                    while(newDirector.getWebsite() == null || newDirector.getWebsite().isEmpty()){
+                         newDirector.setWebsite(getStringInput(Messages.INSERT_SHOW_DIRECTOR_WEBSITE));
+                    }
+               
+                // Add new director object to ArrayList we have for them
+                directorsList.add(newDirector);
 
-             boolean isActorsPresent = checkDuplicatesEntries.isActorsPresent(actorsList, actor_name, actor_surname);  
-             
-            
-            // If actor not add yet add more info about
-            if (!isActorsPresent) {
+            } 
+
+            while(true)
+            {
+
+                 // Create new actor
+                 Actors newActors = new Actors();
+
+                // Insert movie actor first name
+                while(newActors.getFName() == null || newActors.getFName().isEmpty()){
+                    actor_name = getStringInput(Messages.INSERT_SHOW_ACTOR_NAME);
+                    newActors.setFName(actor_name);
+                }
 
 
+                // Insert movie actor last name
+                while(newActors.getLName() == null ||newActors.getLName().isEmpty()){
+                    actor_surname = getStringInput(Messages.INSERT_SHOW_ACTOR_SURNAME);
+                    newActors.setLName(actor_surname);
+                }
 
-                // Actors unique id
-                UUID uniqueDirectorId = UUID.randomUUID();
 
-                actor_id = uniqueDirectorId.toString();
-                newActors.setPeopleId(actor_id);
+                // Combine actor first and last name to one to use later
+                String actor_full_name = newActors.getFName() + " " + newActors.getLName();
+
+                 boolean isActorsPresent = checkDuplicatesEntries.isActorsPresent(actorsList, actor_name, actor_surname);  
 
 
-                // Insert movie actor birth date
-                System.out.println(Messages.INSERT_SHOW_ACTOR_BIRTH);
-                //actor_birth_date = answer.nextLine();
-                newActors.setBirthDate(answer.nextLine());
+                // If actor not add yet add more info about
+                if (!isActorsPresent) {
 
-                // Insert movie actor country
-                System.out.println(Messages.INSERT_SHOW_ACTOR_COUNTRY);
-                newActors.setBirthCountry(answer.nextLine());
 
-                // Insert movie actor website
-                System.out.println(Messages.INSERT_SHOW_ACTOR_WEBSITE);
-                //actor_website = answer.nextLine();
-                newActors.setWebsite(answer.nextLine());
+                    // Actors unique id
+                    actor_id = uniqueIdGenerator.UniqueIdGenerator( "Actors");
 
-                // Create new director
-                //Actors newActors = new Actors(actor_id, actor_name, actor_surname, actor_birth_date, actor_country_of_birth, actor_website);
+                    newActors.setPeopleId(actor_id);
 
-                // Add new actor object to ArrayList we have for them
-                actorsList.add(newActors);
-            }
+                    // Insert movie actor birth date
+                    while(true){
+                        int birthYear = getIntInput(Messages.INSERT_SHOW_ACTOR_BIRTH);
+                        if(validDate(birthYear)){
+                                newActors.setBirthDate(birthYear);
+                                break;
+                            }
+                    }
+                    
+                    // Insert movie actor country
+                    while(newActors.getBirthCountry() == null || newActors.getBirthCountry().isEmpty()){
+                         newActors.setBirthCountry(getStringInput(Messages.INSERT_SHOW_ACTOR_BIRTH));
+                    }
+                   
 
-            // List of Actors playing in the movie user insert
-            actors_array_list.add(actor_full_name);
+                    // Insert movie actor website
+                    while(newActors.getWebsite() == null || newActors.getWebsite().isEmpty()){
+                         newActors.setWebsite(getStringInput(Messages.INSERT_SHOW_ACTOR_WEBSITE));
+                    }
+                    
+                    // Add new actor object to ArrayList we have for them
+                    actorsList.add(newActors);
+                }
 
-            // Warning  message to stop add actor
-            System.out.println(Messages.STOP_ADD_ACTORS);
-
-            String stop_adding_actors = answer.nextLine();
-
-            // If user reache the maximum number of actors show message
-            if(actors_array_list.size() >= 10 ){
-
-                System.out.println(Messages.MAXIMUM_ACTORS); 
-                System.out.println(Messages.BACK_TO_THE_MENU);
-                //String stop_adding_actors = answer.nextLine();
-
-            }else if(actors_array_list.size() == 9 ){
+                // List of Actors playing in the movie user insert
+                actors_array_list.add(actor_full_name);
 
                 // Warning  message to stop add actor
-                System.out.println(Messages.LAST_ENTRY);
+                System.out.println(Messages.STOP_ADD_ACTORS);
 
-            }else if("0".equals(stop_adding_actors) ){
-                break;  
+                String stop_adding_actors = acceptString.nextLine();
+
+                // If user reache the maximum number of actors show message
+                if(actors_array_list.size() >= 10 ){
+
+                    System.out.println(Messages.MAXIMUM_ACTORS); 
+                    System.out.println(Messages.BACK_TO_THE_MENU);
+               
+                }else if(actors_array_list.size() == 9 ){
+
+                    // Warning  message to stop add actor
+                    System.out.println(Messages.LAST_ENTRY);
+
+                }else if("0".equals(stop_adding_actors) ){
+                    break;  
+                }
             }
 
-        }
+            
+            show.setActorInfo(actors_array_list);
 
-        UUID uniqueDirectorId = UUID.randomUUID();
-        show.setActorInfo(actors_array_list);
-       
-        show_id = uniqueDirectorId.toString();
-        show.setShowId(show_id);
-        //Movie newMovie = new Movie(show_id, title, genres_list, releaseYear, countryofProduction, director_full_name, actors_array_list);
-        
-    }
-    
-    
+
+            show.setShowId(show_id);
+            showList.add((T) show);
+    }    
 }

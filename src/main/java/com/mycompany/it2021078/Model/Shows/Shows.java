@@ -3,18 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.it2021078.Model.Shows;
+import com.mycompany.it2021078.Interfaces.PeopleIDGenerator;
+import com.mycompany.it2021078.Interfaces.ShowIDGenerator;
 import java.util.ArrayList; // import the ArrayList class
 
 /**
  *
  * @author nik
  */
-public class Shows {
+public class Shows  implements ShowIDGenerator{
     
     protected String showId;
     protected String title;
     protected ArrayList<String> genre  = new ArrayList<>();
-    protected String year1;
+    protected int year1;
     protected String prodCountry;
     protected String directorInfo;
     protected ArrayList<String> actorInfo;
@@ -26,7 +28,7 @@ public class Shows {
     }
     
     public Shows(){}
-    public Shows(String showId, String title, ArrayList<String> genre, String year1, String prodCountry, String directorInfo, ArrayList<String> actorInfo){
+    public Shows(String showId, String title, ArrayList<String> genre, int year1, String prodCountry, String directorInfo, ArrayList<String> actorInfo){
        
         this.showId = showId;
         this.title = title;
@@ -87,12 +89,12 @@ public class Shows {
     public void addRate(Rate rate){this.rates.add(rate);}
     
     // Getter
-    public String getYear1() {
+    public int getYear1() {
       return year1;
     }
 
     // Setter
-    public void setyear1(String newYear1) {
+    public void setyear1(int newYear1) {
       this.year1 = newYear1;
     }
     

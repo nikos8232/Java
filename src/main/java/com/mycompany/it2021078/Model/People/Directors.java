@@ -16,7 +16,7 @@ public class Directors extends People{
         return "Directors [peopleId=" + peopleId + ", fName=" + fName +  ", lName=" + lName + ", birthDate=" + birthDate + ", birthCountry=" + birthCountry + ", website=" + website +"]";
     }
     public Directors(){}
-     public Directors(String peopleId, String fName, String lName, String birthDate, String birthCountry, String website){
+     public Directors(String peopleId, String fName, String lName, int birthDate, String birthCountry, String website){
         super(peopleId, fName, lName, birthDate, birthCountry, website );
     }
     

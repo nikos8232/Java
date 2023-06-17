@@ -33,4 +33,14 @@ public boolean isActorsPresent(List<Actors> directors, String name, String surna
         .anyMatch(director -> director.getFName().equals(name) && director.getLName().equals(surname));
 }
 
+public static boolean validLastYearOfSerie(int prodYear, int lastYear){
+
+    return lastYear > prodYear;
+}
+public static boolean validDate(int  input_year){
+    int currentYear = LocalDate.now().getYear();
+    return input_year <= currentYear && input_year > 1500;
+    
+}
+
 }

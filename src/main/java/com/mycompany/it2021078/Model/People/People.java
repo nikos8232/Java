@@ -6,19 +6,22 @@ package com.mycompany.it2021078.Model.People;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.mycompany.it2021078.Interfaces.PeopleIDGenerator;
+
+
+
 
 /**
  *
  * @author nik
  */
 
-
-public class People {
+public class People implements PeopleIDGenerator{
     
     protected String peopleId;
     protected String fName;
     protected String lName;
-    protected String birthDate;
+    protected int birthDate;
     protected String birthCountry;
     protected String website;
     
@@ -28,7 +31,7 @@ public class People {
         return "People [peopleId=" + peopleId + ", fName=" + fName +  ", lName=" + lName + ", birthDate=" + birthDate + ", birthCountry=" + birthCountry + ", website=" + website +"]";
     }
     public People(){}
-    public People(String peopleId, String fName, String lName, String birthDate, String birthCountry, String website){
+    public People(String peopleId, String fName, String lName, int birthDate, String birthCountry, String website){
        
         this.peopleId = peopleId;
         this.fName = fName;
@@ -71,12 +74,12 @@ public class People {
     }
     
     // Getter
-    public String getBirthDate() {
+    public int getBirthDate() {
       return birthDate;
     }
 
     // Setter
-    public void setBirthDate(String newBirthDate) {
+    public void setBirthDate(int newBirthDate) {
       this.birthDate = newBirthDate;
     }
     
