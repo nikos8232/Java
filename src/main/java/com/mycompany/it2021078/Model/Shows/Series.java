@@ -8,13 +8,13 @@ public class Series extends Shows {
     
     protected int seasons ;
     protected ArrayList<Integer> episodes ;
-    protected String yearLast;
+    protected int yearLast;
     
     
     
     public Series(){}
     
-    public Series(String showId, String title, ArrayList<String> genre, String year1, String prodCountry, String directorInfo, ArrayList<String> actorInfo, int seasons, ArrayList<Integer> episodes, String yearLast){
+    public Series(String showId, String title, ArrayList<String> genre, int year1, String prodCountry, String directorInfo, ArrayList<String> actorInfo, int seasons, ArrayList<Integer> episodes, int yearLast){
        
         super(showId, title, genre, year1, prodCountry, directorInfo,actorInfo );
         this.seasons = seasons;
@@ -47,12 +47,12 @@ public class Series extends Shows {
     
     
     // Getter
-    public String getYearLast() {
+    public int getYearLast() {
       return yearLast;
     }
 
     // Setter
-    public void setYearLast(String newYearLast) {
+    public void setYearLast(int newYearLast) {
       this.yearLast = newYearLast;
     }
     

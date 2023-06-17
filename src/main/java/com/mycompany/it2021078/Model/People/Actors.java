@@ -20,7 +20,7 @@ public class Actors extends People {
         return "Actors [peopleId=" + peopleId + ", fName=" + fName +  ", lName=" + lName + ", birthDate=" + birthDate + ", birthCountry=" + birthCountry + ", website=" + website +"]";
     }
     public Actors(){}
-     public Actors(String peopleId, String fName, String lName, String birthDate, String birthCountry, String website){
+     public Actors(String peopleId, String fName, String lName, int birthDate, String birthCountry, String website){
         super(peopleId, fName, lName, birthDate, birthCountry, website );
     }
 }

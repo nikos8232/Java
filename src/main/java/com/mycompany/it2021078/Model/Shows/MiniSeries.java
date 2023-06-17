@@ -18,7 +18,7 @@ public class MiniSeries extends Series{
     }
     public MiniSeries(){}
 
-    public MiniSeries(String showId, String title, ArrayList<String> genre, String year1, String prodCountry, String directorInfo, ArrayList<String> actorInfo, int seasons, ArrayList<Integer> episodes, String yearLast) {
+    public MiniSeries(String showId, String title, ArrayList<String> genre, int year1, String prodCountry, String directorInfo, ArrayList<String> actorInfo, int seasons, ArrayList<Integer> episodes, int yearLast) {
 
         super(showId, title, genre, year1, prodCountry, directorInfo, actorInfo, seasons, episodes,yearLast );
     }

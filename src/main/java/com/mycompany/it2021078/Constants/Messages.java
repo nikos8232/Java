@@ -26,11 +26,11 @@ public class Messages {
                                                     *******  Press 3 To Insert Mini Serie  ****** 
                                                    """ ;
     
-    // ****************  Show  ****************
+    // ****************  Show(Movies,Series,Mini Series)  ****************
     public static final  String INSERT_SHOW_TITLE = "Insert Show's Title";
     public static final  String INSERT_SHOW_RELEASE_YEAR = "Insert Show's Release Year";
     public static final  String INSERT_SHOW_GENRE = "Insert Show's Genre(e.g. Crime,Drame,Romantic)";
-    public static final  String MAXIMUM_GENRES = "The maximum number of genres must be less than or equal to 3";
+    public static final  String MAXIMUM_GENRES = "The number of genres must be greater than 1 and  less than or equal to 3";
     public static final  String INSERT_SHOW_COUNTRY = "Insert Show's Country of production";
     
     
@@ -50,10 +50,56 @@ public class Messages {
     public static final  String INSERT_SHOW_ACTOR_WEBSITE = "Insert Show's Actor Website";
     public static final  String MAXIMUM_ACTORS = "The maximum number of actors must be less than or equal to 10";
     
+    // ****************  Show - Series  ****************
+    public static final  String INSERT_SERIES_SEASONS = "Insert Number Of Seasons";
+    public static final  String INSERT_EPISODES_OF_SEASON = "Insert Episodes Of Season: %d";
+    public static final  String INSERT_LAST_YEAR = "Insert Last Year Of Serie";
     
+    // ****************  2. SearchAndEditShow  ****************
+    public static final  String SEARCH_TEXT = """
+                                                              Search And Then Edit Show 
+                                                   *******  Type 1 to See All Shows  ******             
+                                                   *******  Type 2 Movies By Show ID Or By Show Name ****** 
+                                                   *******  Type 3 Series By Show ID Or By Show Name  ****** 
+                                                   *******  Type 4 Mini Series By Show ID Or By Show Name  ****** 
+                                                   *******  Type exit Mini Series By Show ID Or By Show Name  ****** 
+                                                    
+                                                   """ ;
+    public static final  String TYPE_OF_SHOW = """
+                                                              What You Want To See: 
+                                                    *******  Type 1 For Movies  ****** 
+                                                    *******  Type 2 For Series  ****** 
+                                                    *******  Type 3 For Mini Series  ****** 
+                                                   """ ;
+    
+    
+     public static final  String TYPE_NAME_OR_ID_OF_MOVIE = "Type Name Or Id To Search Movie";
+     public static final  String TYPE_NAME_OR_ID_OF_SERIE = "Type Name Or Id To Search Serie";
+     public static final  String TYPE_NAME_OR_ID_OF_MINI_SERIE = "Type Name Or Id To Search Mini Serie";
+     
+     public static final  String ENTER_TO_NEXT = "Press Enter to continue...";
+     public static final  String SHOW_FOUND_BY_NAME = "Show found: ";
+     public static final  String SHOW_ACTORS_RESULT = "You Can Only Add Actors To This Movie. Actors: ";
+     public static final  String SHOW_HAVE_MAX_ACTORS = "Maximum Entries For Actors You Can't Add More Actors";
+     public static final  String PRESS_TO_ADD_ACTOR = "Press 1 To Add Actors Or  2 To Exit";
+     public static final  String NOTHING_FOUND = "Nothing Found";
+     public static final  String WRONG_INPUT = "Wrong Input "; 
+     public static final  String SHOW_SERIES_RESULT = "You Can Add Actors, Seasons and Episodes To This Serie. Actors: ";
+     public static final  String SHOW_SERIE_HAVE_MAX_ACTORS = "Maximum Entries For Actors You Add More Actors"; 
+     public static final  String PRESS_TO_ADD_TO_SERIE = "Press 1 To Edit Actors Or  2 To Edit Season Or 3 To Edit Episodes Or 4 To Exit";
+     
+     public static final  String EDIT_NUMBER_OF_SEASON = "Edit Number Of Seasons(If Delete Season Also Episodes Will Delete!!!)"; 
+     public static final  String WRONG_SEASON_NUMBER = "You Can't Set Seasons To Zero Enter Seasons Again";
+//     public static final  String EDIT_NUMBER_OF_SEASON = "Edit Number Of Seasons(If Delete Season Also Episodes Will Delete!!!)"; 
+//     public static final  String WRONG_SEASON_NUMBER = "You Can't Set Seasons To Zero Enter Seasons Again";
+//     public static final  String EDIT_NUMBER_OF_SEASON = "Edit Number Of Seasons(If Delete Season Also Episodes Will Delete!!!)"; 
+//     public static final  String WRONG_SEASON_NUMBER = "You Can't Set Seasons To Zero Enter Seasons Again";
+     
+     
+     
     // ****************  Generic  ****************
     public static final  String STOP_ADD_ACTORS = "if you want to stop press: 0 if you want to continue press: 1";
-    public static final  String BACK_TO_THE_MENU = "Press 0 to go back to the menu";
+    public static final  String BACK_TO_THE_MENU = "Type 0 to go back to the menu";
     public static final  String LAST_ENTRY = "Last entry!!!";
     
 
