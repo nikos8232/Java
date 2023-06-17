@@ -42,10 +42,19 @@ public class It2021078 {
         // Create new object addShowOperation 
         addShowOperation addShowOperation = new addShowOperation();
         
-        //searchShowOperation searchShowOperation - new searchShowOperation();
+
         searchShowOperation searchShowOperation = new searchShowOperation();
 
         accountOperation accountOperation = new accountOperation();
+
+        //searchShowOperation searchShowOperation - new searchShowOperation();
+
+        searchShowOperation searchShowOperation = new searchShowOperation();
+
+        accountOperation accountOperation = new accountOperation();
+
+
+
         
         
         while(true){

@@ -5,7 +5,19 @@
 package com.mycompany.it2021078.Operations;
 
 import com.mycompany.it2021078.Constants.Messages;
+
 import com.mycompany.it2021078.Model.Accounts.Accounts;
+
+
+import com.mycompany.it2021078.Model.Accounts.Accounts;
+import com.mycompany.it2021078.Model.Data;
+import com.mycompany.it2021078.Model.Shows.MiniSeries;
+import com.mycompany.it2021078.Model.Shows.Movie;
+import com.mycompany.it2021078.Model.Shows.Rate;
+import com.mycompany.it2021078.Model.Shows.Series;
+
+import java.util.ArrayList;
+
 import com.mycompany.it2021078.Model.Data;
 import com.mycompany.it2021078.Model.People.Actors;
 import com.mycompany.it2021078.Model.Shows.MiniSeries;
@@ -21,6 +33,7 @@ import static com.mycompany.it2021078.Utils.inputHandler.getStringInput;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+
 import java.util.Scanner;
 
 /**
@@ -28,12 +41,13 @@ import java.util.Scanner;
  * @author nik
  */
 public class searchShowOperation {
-	int i;
+
+    int i;
     int j;
     int k;
     static final int CHUNK_SIZE = 5;
-    
-        public ArrayList<ArrayList> SearchShow(){
+    public ArrayList<ArrayList> SearchShow(){
+
         Scanner answer = new Scanner(System.in);
         ArrayList<ArrayList> results = new ArrayList<ArrayList>();
         ArrayList<Movie> movies = Data.getMoviesList();
@@ -84,6 +98,7 @@ public class searchShowOperation {
             System.out.println(Messages.ENTER_YEAR);
             user_choice = answer.nextLine();
             for(i = 0; i< movies.size(); i++){
+
                 if(movies.get(i).getYear1() == Integer. parseInt(user_choice)){
                     System.out.println("Id: " + movies.get(i).getShowId() + " Title: " +
                             movies.get(i).getTitle() + " Release Year: " +
@@ -93,6 +108,7 @@ public class searchShowOperation {
                 }
             }
             for(i = 0; i< series.size(); i++){
+
                 if( series.get(i).getYear1() == Integer. parseInt(user_choice) ){
                     System.out.println("Id: " + series.get(i).getShowId() + " Title: " +
                             series.get(i).getTitle() + " Release Year: " +
@@ -103,6 +119,7 @@ public class searchShowOperation {
                 }
             }
             for(i = 0; i< miniSeries.size(); i++){
+
                 if( miniSeries.get(i).getYear1() == Integer. parseInt(user_choice)){
                     System.out.println("Id: " + miniSeries.get(i).getShowId() + " Title: " +
                             miniSeries.get(i).getTitle() + " Release Year: " +
@@ -272,7 +289,7 @@ public class searchShowOperation {
     public boolean ShowRates(ArrayList<ArrayList<String>> shows, Data data, ArrayList<Accounts> accounts){
         return RateShow(shows, 2, data, accounts);
     }
-    
+
     
     
     public static void SearchAndEditShow(Data data){
