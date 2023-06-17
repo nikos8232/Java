@@ -13,17 +13,18 @@ import java.util.ArrayList;
 public class Accounts {
 
 
- 
-        protected int accountId;
+        static int count= 0;
+        protected  int accountId;
         protected String username;
         protected String password;
+        protected String email;
 
-        public Accounts(int accountId, String username, String password){
+        public Accounts(String email, String username, String password){
 
-            this.accountId = accountId;
+            this.email = email;
             this.username = username;
             this.password = password;
- 
+            this.accountId = ++this.count;
         }
 
         // Getter
