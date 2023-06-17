@@ -84,7 +84,7 @@ public class searchShowOperation {
             System.out.println(Messages.ENTER_YEAR);
             user_choice = answer.nextLine();
             for(i = 0; i< movies.size(); i++){
-                if(movies.get(i).getYear1().compareTo(user_choice)== 0){
+                if(movies.get(i).getYear1() == Integer. parseInt(user_choice)){
                     System.out.println("Id: " + movies.get(i).getShowId() + " Title: " +
                             movies.get(i).getTitle() + " Release Year: " +
                             movies.get(i).getYear1() + " Average Score: " +
@@ -93,7 +93,7 @@ public class searchShowOperation {
                 }
             }
             for(i = 0; i< series.size(); i++){
-                if(series.get(i).getYear1().compareTo(user_choice)== 0){
+                if( series.get(i).getYear1() == Integer. parseInt(user_choice) ){
                     System.out.println("Id: " + series.get(i).getShowId() + " Title: " +
                             series.get(i).getTitle() + " Release Year: " +
                             series.get(i).getYear1() + " Average Score: " +
@@ -103,7 +103,7 @@ public class searchShowOperation {
                 }
             }
             for(i = 0; i< miniSeries.size(); i++){
-                if(miniSeries.get(i).getYear1().compareTo(user_choice)== 0){
+                if( miniSeries.get(i).getYear1() == Integer. parseInt(user_choice)){
                     System.out.println("Id: " + miniSeries.get(i).getShowId() + " Title: " +
                             miniSeries.get(i).getTitle() + " Release Year: " +
                             miniSeries.get(i).getYear1() + " Average Score: " +

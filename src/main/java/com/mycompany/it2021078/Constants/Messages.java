@@ -90,7 +90,6 @@ public class Messages {
      public static final  String SHOW_HAVE_MAX_ACTORS = "Maximum Entries For Actors You Can't Add More Actors";
      public static final  String PRESS_TO_ADD_ACTOR = "Press 1 To Add Actors Or  2 To Exit";
      public static final  String NOTHING_FOUND = "Nothing Found";
-     public static final  String WRONG_INPUT = "Wrong Input "; 
      public static final  String SHOW_SERIES_RESULT = "You Can Add Actors, Seasons and Episodes To This Serie. Actors: ";
      public static final  String SHOW_SERIE_HAVE_MAX_ACTORS = "Maximum Entries For Actors You Add More Actors"; 
      public static final  String PRESS_TO_ADD_TO_SERIE = "Press 1 To Edit Actors Or  2 To Edit Season Or 3 To Edit Episodes Or 4 To Exit";
