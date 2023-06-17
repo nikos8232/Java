@@ -7,6 +7,9 @@ package com.mycompany.it2021078.Operations;
 import com.mycompany.it2021078.Constants.Messages;
 
 import com.mycompany.it2021078.Model.Accounts.Accounts;
+
+
+import com.mycompany.it2021078.Model.Accounts.Accounts;
 import com.mycompany.it2021078.Model.Data;
 import com.mycompany.it2021078.Model.Shows.MiniSeries;
 import com.mycompany.it2021078.Model.Shows.Movie;
@@ -21,6 +24,7 @@ import com.mycompany.it2021078.Model.Shows.MiniSeries;
 import com.mycompany.it2021078.Model.Shows.Movie;
 import com.mycompany.it2021078.Model.Shows.Series;
 import com.mycompany.it2021078.Model.Shows.Shows;
+import com.mycompany.it2021078.Model.Shows.Rate;
 import com.mycompany.it2021078.Utils.UniqueIdGenerator;
 import com.mycompany.it2021078.Utils.entriesValidation;
 import static com.mycompany.it2021078.Utils.entriesValidation.validDate;
@@ -43,6 +47,7 @@ public class searchShowOperation {
     int k;
     static final int CHUNK_SIZE = 5;
     public ArrayList<ArrayList> SearchShow(){
+
         Scanner answer = new Scanner(System.in);
         ArrayList<ArrayList> results = new ArrayList<ArrayList>();
         ArrayList<Movie> movies = Data.getMoviesList();
@@ -93,7 +98,8 @@ public class searchShowOperation {
             System.out.println(Messages.ENTER_YEAR);
             user_choice = answer.nextLine();
             for(i = 0; i< movies.size(); i++){
-                if(movies.get(i).getYear1().compareTo(user_choice)== 0){
+
+                if(movies.get(i).getYear1() == Integer. parseInt(user_choice)){
                     System.out.println("Id: " + movies.get(i).getShowId() + " Title: " +
                             movies.get(i).getTitle() + " Release Year: " +
                             movies.get(i).getYear1() + " Average Score: " +
@@ -102,7 +108,8 @@ public class searchShowOperation {
                 }
             }
             for(i = 0; i< series.size(); i++){
-                if(series.get(i).getYear1().compareTo(user_choice)== 0){
+
+                if( series.get(i).getYear1() == Integer. parseInt(user_choice) ){
                     System.out.println("Id: " + series.get(i).getShowId() + " Title: " +
                             series.get(i).getTitle() + " Release Year: " +
                             series.get(i).getYear1() + " Average Score: " +
@@ -112,7 +119,8 @@ public class searchShowOperation {
                 }
             }
             for(i = 0; i< miniSeries.size(); i++){
-                if(miniSeries.get(i).getYear1().compareTo(user_choice)== 0){
+
+                if( miniSeries.get(i).getYear1() == Integer. parseInt(user_choice)){
                     System.out.println("Id: " + miniSeries.get(i).getShowId() + " Title: " +
                             miniSeries.get(i).getTitle() + " Release Year: " +
                             miniSeries.get(i).getYear1() + " Average Score: " +
@@ -282,6 +290,7 @@ public class searchShowOperation {
         return RateShow(shows, 2, data, accounts);
     }
 
+    
     
     public static void SearchAndEditShow(Data data){
         

@@ -49,6 +49,12 @@ public class It2021078 {
 
         //searchShowOperation searchShowOperation - new searchShowOperation();
 
+        searchShowOperation searchShowOperation = new searchShowOperation();
+
+        accountOperation accountOperation = new accountOperation();
+
+
+
         
         
         while(true){
