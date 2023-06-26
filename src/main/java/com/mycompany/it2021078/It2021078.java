@@ -15,6 +15,9 @@ import com.mycompany.it2021078.Model.Shows.Movie;
 import com.mycompany.it2021078.Model.Shows.Series;
 import com.mycompany.it2021078.Model.People.Directors;
 import com.mycompany.it2021078.Model.People.Actors;
+import com.mycompany.it2021078.Model.Shows.Favorite;
+import com.mycompany.it2021078.Operations.searchActorDirectorOperation;
+import static com.mycompany.it2021078.Operations.searchActorDirectorOperation.favoriteActorDirector;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -87,6 +90,8 @@ public class It2021078 {
 
 
                         case "4" -> {
+                         
+                                            searchActorDirectorOperation.SearchActorsAndDirectors(data, accounts);
                         }
 
                         case "5" -> {
@@ -96,14 +101,19 @@ public class It2021078 {
                                 while(searchShowOperation.ShowRates(shows, data, accounts)){}
                             }
                         }
+                        
                         case "6" -> {
+                            favoriteActorDirector(accounts);
+
+                        }
+                        case "7" -> {
                             if(Data.getIsLoggedIn() == "") {
                                 data.setIsLoggedIn(accountOperation.Register(accounts));
                             }else{
                                 data.setIsLoggedIn("");
                             }
                         }
-                        case "7" -> {
+                        case "8" -> {
                             data.setIsLoggedIn(accountOperation.LogIn(accounts));
                         }
 

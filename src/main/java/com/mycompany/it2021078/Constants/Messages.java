@@ -16,13 +16,14 @@ public class Messages {
                                         *******  Press 2 To Update Show Infos  ****** 
                                         *******  Press 3 To Search Shows  ****** 
                                         *******  Press 4 To Search Actors/Directors  ****** 
-                                        *******  Press 5 To View Ratings  ******""";
+                                        *******  Press 5 To View Ratings  ******
+                                        *******  Press 6 To View Favorites  ******""";
 
-    public static final  String MENU_REGISTER = "*******  Press 6 To Sign Up  ******";
+    public static final  String MENU_REGISTER = "*******  Press 7 To Sign Up  ******";
 
-    public static final  String MENU_LOGIN = "*******  Press 7 To Log In  ******";
+    public static final  String MENU_LOGIN = "*******  Press 8 To Log In  ******";
 
-    public static final  String MENU_LOGOUT = "*******  Press 6 To Log Out  ******";
+    public static final  String MENU_LOGOUT = "*******  Press 7 To Log Out  ******";
 
     
     
@@ -69,7 +70,7 @@ public class Messages {
                                                    *******  Type 2 Movies By Show ID Or By Show Name ****** 
                                                    *******  Type 3 Series By Show ID Or By Show Name  ****** 
                                                    *******  Type 4 Mini Series By Show ID Or By Show Name  ****** 
-                                                   *******  Type exit Mini Series By Show ID Or By Show Name  ****** 
+                                                   *******  Type Exit To Go Back To Menu  ****** 
                                                     
                                                    """ ;
     public static final  String TYPE_OF_SHOW = """
@@ -96,12 +97,26 @@ public class Messages {
      
      public static final  String EDIT_NUMBER_OF_SEASON = "Edit Number Of Seasons(If Delete Season Also Episodes Will Delete!!!)"; 
      public static final  String WRONG_SEASON_NUMBER = "You Can't Set Seasons To Zero Enter Seasons Again";
-//     public static final  String EDIT_NUMBER_OF_SEASON = "Edit Number Of Seasons(If Delete Season Also Episodes Will Delete!!!)"; 
-//     public static final  String WRONG_SEASON_NUMBER = "You Can't Set Seasons To Zero Enter Seasons Again";
-//     public static final  String EDIT_NUMBER_OF_SEASON = "Edit Number Of Seasons(If Delete Season Also Episodes Will Delete!!!)"; 
-//     public static final  String WRONG_SEASON_NUMBER = "You Can't Set Seasons To Zero Enter Seasons Again";
+
      
-     
+     // ****************  2. SearchActorsAndDirectors ****************
+     public static final  String SEARCH_ACTORS_DIRECTORS = """
+                                                                                                            Search  Actors Or Directors
+                                                                                                 *******  Type 1 To Search Actors By Name  ******             
+                                                                                                 *******  Type 2 To Search Directors By Name ****** 
+                                                                                                 *******  Type Exit To Go Back To Menu  ****** 
+                                                                                                 """ ;
+     public static final  String TYPE_ACTOR_FNAME = "Type First Name Of Actor And Press Enter";
+     public static final  String TYPE_ACTOR_LNAME = "Type Last Name Of Actor And Press Enter";
+     public static final  String RESULT_ACTORS_SEARCH = "Actor found: ";
+     public static final  String ACTION_AFTER_SEARCH_ACTOR = "Press 1. To See Maximum And Minimum Average Of Show That Actor Played . Press 2 To Add Actor To Your Favorites";
+     public static final String MOVIES_FOR_SEARCHED = "Movies Found: ";
+     public static final  String TYPE_DIRECTOR_FNAME = "Type First Name Of Director And Press Enter ";
+     public static final  String TYPE_DIRECTOR_LNAME = "Type Last Name Of Director And Press Enter";
+     public static final  String ACTION_AFTER_SEARCH_DIRECTOR = "Press 1. To See Maximum And Minimum Average Of Show That Director Directed . Press 2 To Add Director To Your Favorites. Press 3 To Exit";
+     public static final  String RESULT_DIRECTORS_SEARCH = "Director found: ";
+     public static final  String ACTION_AFTER_SEARCH_DIRECTORS = "Press 1. To See Maximum And Minimum Average Of Show That Actor Played . Press 2 To Add Actor To Your Favorites. Press 3 To Exit";
+    
      
     // ****************  Generic  ****************
     public static final  String STOP_ADD_ACTORS = "if you want to stop press: 0 if you want to continue press: 1";
