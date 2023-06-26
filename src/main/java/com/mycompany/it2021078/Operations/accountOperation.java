@@ -2,6 +2,8 @@ package com.mycompany.it2021078.Operations;
 
 import com.mycompany.it2021078.Constants.Messages;
 import com.mycompany.it2021078.Model.Accounts.Accounts;
+import com.mycompany.it2021078.Model.Shows.Favorite;
+import static com.mycompany.it2021078.Utils.entriesValidation.isUsernameExist;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,11 +14,19 @@ public class accountOperation {
         Scanner answer = new Scanner(System.in);
         System.out.println(Messages.ASK_USERNAME);
         String username = answer.nextLine();
+        boolean usernameExist = isUsernameExist(username, accounts);
+        
+        while(usernameExist){
+            System.out.println(Messages.ASK_USERNAME);
+            username = answer.nextLine();
+            usernameExist = isUsernameExist(username, accounts);
+        }
         System.out.println(Messages.ASK_PASSWORD);
         String password = answer.nextLine();
         System.out.println(Messages.ASK_EMAIL);
         String email = answer.nextLine();
-        accounts.add(new Accounts(email,username, password));
+        ArrayList<Favorite> favorite = new ArrayList<Favorite>();
+        accounts.add(new Accounts(email,username, password, favorite));
         return username;
 
     }

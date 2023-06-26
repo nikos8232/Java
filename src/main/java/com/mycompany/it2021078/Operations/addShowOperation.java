@@ -309,7 +309,9 @@ public class addShowOperation {
                     // Insert movie actor birth date
                     while(true){
                         int birthYear = getIntInput(Messages.INSERT_SHOW_ACTOR_BIRTH);
+                        System.out.println("nikos");
                         if(validDate(birthYear)){
+                                System.out.println("nikos2");
                                 newActors.setBirthDate(birthYear);
                                 break;
                             }
@@ -317,7 +319,7 @@ public class addShowOperation {
                     
                     // Insert movie actor country
                     while(newActors.getBirthCountry() == null || newActors.getBirthCountry().isEmpty()){
-                         newActors.setBirthCountry(getStringInput(Messages.INSERT_SHOW_ACTOR_BIRTH));
+                         newActors.setBirthCountry(getStringInput(Messages.INSERT_SHOW_ACTOR_COUNTRY));
                     }
                    
 

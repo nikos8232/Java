@@ -24,6 +24,7 @@ import java.util.List;
 public class Data {
     
     static String isLoggedIn;
+    static ArrayList<Shows> showsList;
     static ArrayList<Movie> moviesList;
     static ArrayList<Directors> directorsList;
     static ArrayList<Actors> actorsList;
@@ -33,9 +34,9 @@ public class Data {
     // Constructors
     //Ηello
     public Data(){}
-    public Data(ArrayList<Movie> moviesList, ArrayList<Directors> directorsList, ArrayList<Actors> actorsList, ArrayList<Series> seriesList ,ArrayList<MiniSeries> miniSeriesList) {
+    public Data(ArrayList<Shows> showsList, ArrayList<Movie> moviesList, ArrayList<Directors> directorsList, ArrayList<Actors> actorsList, ArrayList<Series> seriesList ,ArrayList<MiniSeries> miniSeriesList) {
         this.moviesList = moviesList;
-        //this.showsList = showsList;
+        this.showsList = showsList;
         this.directorsList = directorsList;
         this.actorsList = actorsList;
         this.seriesList = seriesList;
@@ -43,9 +44,9 @@ public class Data {
     }
 
     // Getters
-//    public static ArrayList<Shows> getShowsList() {
-//        return showsList;
-//    }
+    public static ArrayList<Shows> getShowsList() {
+        return showsList;
+    }
     public static String getIsLoggedIn() {
         return isLoggedIn;
     }
@@ -70,9 +71,9 @@ public class Data {
     }
 
     // Setters
-//    public void setShowsList(ArrayList<Shows> showsList) {
-//        this.showsList = showsList;
-//    }
+    public void setShowsList(ArrayList<Shows> showsList) {
+        this.showsList = showsList;
+    }
 
     public void setIsLoggedIn (String isLoggedIn){
         this.isLoggedIn = isLoggedIn;

@@ -4,6 +4,8 @@
  */
 package com.mycompany.it2021078.Model.Accounts;
 
+import com.mycompany.it2021078.Model.Shows.Favorite;
+import com.mycompany.it2021078.Model.Shows.Rate;
 import java.util.ArrayList;
 
 /**
@@ -18,13 +20,15 @@ public class Accounts {
         protected String username;
         protected String password;
         protected String email;
-
-        public Accounts(String email, String username, String password){
+        protected ArrayList<Favorite> favorite;
+        
+        public Accounts(String email, String username, String password, ArrayList<Favorite> favorite){
 
             this.email = email;
             this.username = username;
             this.password = password;
             this.accountId = ++this.count;
+            this.favorite = new ArrayList<Favorite>();
         }
 
         // Getter
@@ -58,5 +62,18 @@ public class Accounts {
           this.password = newPassword;
         }    
         
+        public boolean hasUsername(String newUsername) {
+            return username.equals(newUsername);
+        }
+        
+        // Getter
+        public ArrayList<Favorite> getFavorite() {
+          return favorite;
+        }
+
+        // Setter
+        public void setFavorite(ArrayList<Favorite> favorite) {
+          this.favorite = favorite;
+        }    
         
 }

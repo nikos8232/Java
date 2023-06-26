@@ -44,11 +44,11 @@ public class Initializator {
                 1999, "USA", "David Fincher",
                 new ArrayList<String>(){{add("Brad Pitt"); add("Edward Norton"); add("Zach Grenier");}}));
         movies.add(new Movie("2M", "Pulp Fiction", new ArrayList<String>(){{add("Crime"); add("Drama");}},
-                1994, "USA", "Quentin Tarantino",
-                new ArrayList<String>(){{add("John Travolta"); add("Uma Thurman"); add("Samuel Jackson");}}));
+                1994, "USA", "David Fincher",
+                new ArrayList<String>(){{add("Brad Pitt"); add("Uma Thurman"); add("Samuel Jackson");}}));
         movies.add(new Movie("3M", "Inception", new ArrayList<String>(){{add("Action"); add("Adventure"); add("Sci-Fi");}},
                 2010, "USA", "Christopher Nolan",
-                new ArrayList<String>(){{add("Leonardo Dicaprio"); add("Elliot Page"); add("Ken Watanabe");}}));
+                new ArrayList<String>(){{add("Brad Pitt"); add("Elliot Page"); add("Ken Watanabe");}}));
         return movies;
     }
 
