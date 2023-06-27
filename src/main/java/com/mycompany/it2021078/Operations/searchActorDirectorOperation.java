@@ -147,6 +147,18 @@ public static <T extends People>  void searchActorsOrDirectors(ArrayList<T> peop
                                     
                                     favActors.add( t.getFName() + " " +  t.getLName());
                                     Favorite favorite = new Favorite(account.getUsername(), favActors, favDirectors);
+                                    
+                                     // Check For Duplicate actors
+                                    for(Favorite  favoriteDup: favoriteList){
+                                        for(String actorDup:favoriteDup.getFavActors()){
+                                            if(actorDup.equalsIgnoreCase(t.getFName() + " " +  t.getLName())){
+                                                System.out.println("Already Added To Your Favorites");
+                                                return ;
+                                            }
+                                        }
+                                        
+                                    }
+                                    
                                     favoriteList.add(favorite);
                                     account.setFavorite(favoriteList);
                                    
@@ -228,6 +240,18 @@ public static <T extends People>  void searchActorsOrDirectors(ArrayList<T> peop
                                     
                                     favDirectors.add( t.getFName() + " " +  t.getLName());
                                     Favorite favorite = new Favorite(account.getUsername(), favActors, favDirectors);
+                                    
+                                    // Check For Duplicate directors
+                                    for(Favorite  favoriteDup: favoriteList){
+                                        for(String directorrDup:favoriteDup.getFavDirector()){
+                                            if(directorrDup.equalsIgnoreCase(t.getFName() + " " +  t.getLName())){
+                                                System.out.println("Already Added To Your Favorites");
+                                                return ;
+                                            }
+                                        }
+                                        
+                                    }
+                                    
                                     favoriteList.add(favorite);
                                     account.setFavorite(favoriteList);
                                    
