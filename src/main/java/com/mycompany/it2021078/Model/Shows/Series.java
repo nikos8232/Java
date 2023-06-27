@@ -12,7 +12,7 @@ public class Series extends Shows {
     
     
     
-    public Series(){}
+    public Series(){super();}
     
     public Series(String showId, String title, ArrayList<String> genre, int year1, String prodCountry, String directorInfo, ArrayList<String> actorInfo, int seasons, ArrayList<Integer> episodes, int yearLast){
        

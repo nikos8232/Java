@@ -19,7 +19,7 @@ public class Movie extends Shows {
         return "Show Id=" + showId + ", Title=" + title +  ", Show Type=Movie" + genre + ", genre=" + genre + ", directorInfo=" + directorInfo;
     }
     
-    public Movie(){}
+    public Movie(){super();}
      public Movie(String showId, String title, ArrayList<String> genre, int year1, String prodCountry, String directorInfo, ArrayList<String> actorInfo ){
         super(showId, title, genre, year1, prodCountry, directorInfo,actorInfo );
     }

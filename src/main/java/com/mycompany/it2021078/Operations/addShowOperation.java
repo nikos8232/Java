@@ -361,6 +361,7 @@ public class addShowOperation {
 
 
             show.setShowId(show_id);
+            show.setShowId(show_id);
             showList.add((T) show);
     }    
 }

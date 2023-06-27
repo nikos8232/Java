@@ -1,9 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.mycompany.it2021078.Operations;
 
+package com.mycompany.it2021078.Operations;
 import com.mycompany.it2021078.Constants.Messages;
 import com.mycompany.it2021078.Model.Accounts.Accounts;
 import com.mycompany.it2021078.Model.Data;
@@ -14,22 +10,12 @@ import com.mycompany.it2021078.Model.Shows.Favorite;
 import com.mycompany.it2021078.Model.Shows.MiniSeries;
 import com.mycompany.it2021078.Model.Shows.Movie;
 import com.mycompany.it2021078.Model.Shows.Series;
-import com.mycompany.it2021078.Model.Shows.Shows;
-import static com.mycompany.it2021078.Operations.searchShowOperation.CHUNK_SIZE;
 import static com.mycompany.it2021078.Operations.searchShowOperation.SearchShowsByIdOrName;
-import static com.mycompany.it2021078.Operations.searchShowOperation.allShowInChunks;
-import static com.mycompany.it2021078.Operations.searchShowOperation.editResultActorsFromSearch;
 import static com.mycompany.it2021078.Utils.inputHandler.getStringInput;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
-/**
- *
- * @author nik
- */
+
 public class searchActorDirectorOperation {
     public static ArrayList<Favorite> favoriteList  = new ArrayList<Favorite>();
     
@@ -113,8 +99,9 @@ public static <T extends People>  void searchActorsOrDirectors(ArrayList<T> peop
                         }
 
                          if("1".equals(userChoiceActors)){
-
+                              
                              ArrayList<String[]> findScoreList = findScoreList(listOfTitles);
+                            
                               if(findScoreList.isEmpty()){
                                  System.out.println("No Review Yet");
                              }else if (findScoreList.size() == 1){
@@ -194,6 +181,7 @@ public static <T extends People>  void searchActorsOrDirectors(ArrayList<T> peop
                          if("1".equals(userChoiceActors)){
 
                              ArrayList<String[]> findScoreList = findScoreList(listOfTitles);
+                            
                              if(findScoreList.isEmpty()){
                                  System.out.println("No Review Yet");
                              }else if (findScoreList.size() == 1){
@@ -371,26 +359,31 @@ public static ArrayList<String[]> findScoreList(ArrayList<String> listOfTitles){
            
         }
         
-        
-        double minValue = Double.MAX_VALUE;
-        double maxValue = Double.MIN_VALUE;
-        String[] minTuple = null;
-        String[] maxTuple = null;
+        if(!minMax.isEmpty()){
+            double minValue = Double.MAX_VALUE;
+            double maxValue = Double.MIN_VALUE;
+            String[] minTuple = null;
+            String[] maxTuple = null;
 
-        for (String[] tuple : minMax) {
-            double value = Double.parseDouble(tuple[1].split("/")[0]);
-            if (value < minValue) {
-                minValue = value;
-                minTuple = tuple;
+
+            for (String[] tuple : minMax) {
+                double value = Double.parseDouble(tuple[1].split("/")[0]);
+                if (value < minValue) {
+                    minValue = value;
+                    minTuple = tuple;
+                }
+                if (value > maxValue) {
+                    maxValue = value;
+                    maxTuple = tuple;
+                }
             }
-            if (value > maxValue) {
-                maxValue = value;
-                maxTuple = tuple;
-            }
+
+            minMax.clear();
+            minMax.add(minTuple);
+            minMax.add(maxTuple);
         }
-        minMax.clear();
-        minMax.add(minTuple);
-        minMax.add(maxTuple);
+        
+        
         return minMax;
     
 }

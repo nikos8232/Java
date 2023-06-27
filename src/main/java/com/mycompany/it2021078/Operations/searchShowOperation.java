@@ -185,7 +185,16 @@ public class searchShowOperation {
                                             user_choice = answer.nextLine();
                                         }
                                     }
-                                    movies.get(j).addRate(new Rate("username", rateNum));}
+                                    ArrayList<Rate>movieList = movies.get(j).getRates();
+                                    for(Rate rate : movieList){
+
+                                        if(rate.getUsername().equalsIgnoreCase((Data.getIsLoggedIn()))){
+                                            System.out.println("You Have Already Rated");
+                                            return false ;
+                                        }
+                                    }
+                                    
+                                    movies.get(j).addRate(new Rate(Data.getIsLoggedIn(), rateNum));}
                                     else {
                                         for(k = 0; k < movies.get(j).getRates().size(); k++){
                                             System.out.println("Username: " + movies.get(j).getRates().get(k).getUsername()
@@ -221,7 +230,7 @@ public class searchShowOperation {
                                             user_choice = answer.nextLine();
                                         }
                                     }
-                                    series.get(j).addRate(new Rate("username", rateNum));}
+                                    series.get(j).addRate(new Rate(Data.getIsLoggedIn(), rateNum));}
                                     else{
                                         for(k = 0; k < series.get(j).getRates().size(); k++){
                                             System.out.println("Username: " + series.get(j).getRates().get(k).getUsername()
@@ -257,7 +266,7 @@ public class searchShowOperation {
                                             user_choice = answer.nextLine();
                                         }
                                     }
-                                    miniSeries.get(j).addRate(new Rate("username", rateNum));}
+                                    miniSeries.get(j).addRate(new Rate(Data.getIsLoggedIn(), rateNum));}
                                     else{
                                         for(k = 0; k < miniSeries.get(j).getRates().size(); k++){
                                             System.out.println("Username: " + miniSeries.get(j).getRates().get(k).getUsername()

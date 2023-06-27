@@ -27,7 +27,7 @@ public class Shows  implements ShowIDGenerator{
         return "Show Id=" + showId + ", Title=" + title +  ", Show Type=Show" + genre + ", genre=" + genre + ", directorInfo=" + directorInfo + "]";
     }
     
-    public Shows(){}
+    public Shows(){this.rates = new ArrayList<Rate>();}
     public Shows(String showId, String title, ArrayList<String> genre, int year1, String prodCountry, String directorInfo, ArrayList<String> actorInfo){
        
         this.showId = showId;
