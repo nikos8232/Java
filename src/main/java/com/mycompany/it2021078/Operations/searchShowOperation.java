@@ -46,6 +46,7 @@ public class searchShowOperation {
     int j;
     int k;
     static final int CHUNK_SIZE = 5;
+    
     public ArrayList<ArrayList> SearchShow(){
 
         Scanner answer = new Scanner(System.in);
@@ -132,6 +133,7 @@ public class searchShowOperation {
         }
         return results;
     }
+    
     public boolean RateShow(ArrayList<ArrayList<String>> shows, int reason, Data data, ArrayList<Accounts> accounts){
         int rateNum;
         boolean flag = true;
@@ -374,6 +376,8 @@ public class searchShowOperation {
         
     }
     
+   
+    
     
     public static <T>  void allShowInChunks(ArrayList<T> showList, Scanner scanner) {
         for (int i = 0; i < showList.size(); i += CHUNK_SIZE) {
@@ -474,6 +478,40 @@ public class searchShowOperation {
                     
                 }else if (t instanceof MiniSeries){
                     
+                    String editSerie = null;
+                    System.out.println(Messages.SHOW_SERIES_RESULT + t.getActorInfo() + ((MiniSeries) t).getSeasons() + ((MiniSeries) t).getEpisodes() );
+
+                       if(t.getActorInfo().size() >= 10){
+                           System.out.println(Messages.SHOW_SERIE_HAVE_MAX_ACTORS);
+
+                       }else{
+
+                           System.out.println(Messages.PRESS_TO_ADD_TO_SERIE);
+                           editSerie = answer.nextLine();
+
+                           while(!"1".equals(editSerie) && !"2".equals(editSerie) && !"3".equals(editSerie) && !"4".equals(editSerie)) {
+
+                                System.out.println(Messages.WRONG_INPUT);
+                                System.out.println(Messages.PRESS_TO_ADD_TO_SERIE);
+                                editSerie = answer.nextLine();
+                            }
+
+                            if("1".equals(editSerie)){
+
+                                editResultActorsFromSearch(t.getActorInfo());
+                                break;
+
+                            }else if("2".equals(editSerie)){
+                                editResultSeasonsFromSearch(t);
+
+                            }else if ("3".equals(editSerie)){
+                                editResultEpisodesFromSearch(t);
+                            }else if ("4".equals(editSerie)){
+                                break;
+                            }
+
+                    }
+                    
                 }
                 
             }else{
@@ -552,7 +590,7 @@ public class searchShowOperation {
                     
                     // Insert movie actor country
                     while(newActors.getBirthCountry() == null || newActors.getBirthCountry().isEmpty()){
-                         newActors.setBirthCountry(getStringInput(Messages.INSERT_SHOW_ACTOR_BIRTH));
+                         newActors.setBirthCountry(getStringInput(Messages.INSERT_SHOW_ACTOR_COUNTRY));
                     }
                    
 
@@ -607,7 +645,8 @@ public class searchShowOperation {
         Scanner warning = new Scanner(System.in);
         ArrayList<Integer> episodesOfSeasons = new ArrayList<>();
         
-        Series series = (Series) season_info;
+        Series series = (season_info instanceof Series) ? (Series) season_info :  (MiniSeries) season_info;
+ 
         // Insert movie country of production
         while(true){
             boolean validInput = false;
@@ -702,7 +741,7 @@ public class searchShowOperation {
         Scanner warning = new Scanner(System.in);
         ArrayList<Integer> episodesOfSeasons = new ArrayList<>();
         
-        Series series = (Series) season_info;
+        Series series = (season_info instanceof Series) ? (Series) season_info :  (MiniSeries) season_info;
         // Insert movie country of production
         while(true){
             boolean validInputSeason = false;

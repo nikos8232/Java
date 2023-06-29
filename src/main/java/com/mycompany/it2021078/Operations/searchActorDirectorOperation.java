@@ -50,17 +50,7 @@ public class searchActorDirectorOperation {
                                                 searchActorsOrDirectors(peopleList, directorFirstName, directorLastName, accounts, data);
                                                     
                                                 break;
-                                               }
-                           
-                           case "3" -> {// Print add Show menu choices to add one type of show
-                                                System.out.println(Messages.TYPE_NAME_OR_ID_OF_SERIE);
-                                                String searchValue = answer.nextLine();
-                                                ArrayList<Series> showList = Data.getSeriesList();
-                                                SearchShowsByIdOrName(showList, searchValue); 
-                                                
-                                                break;
-                                               }
-                    
+                                               }                    
                            default -> {
                                                 return;
                                             }
