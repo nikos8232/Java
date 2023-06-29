@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
-
 package com.mycompany.it2021078;
 import com.mycompany.it2021078.Constants.AsciiArt;
 import com.mycompany.it2021078.Constants.Messages;
@@ -21,20 +16,12 @@ import static com.mycompany.it2021078.Operations.searchActorDirectorOperation.fa
 
 import java.util.Scanner;
 import java.util.ArrayList;
-/**
- *
- * @author nik
- */
+
 public class It2021078 {
 
     public static void main(String[] args) {
         
-//        ArrayList<Movie> MoviesList = new ArrayList<Movie>();
-//        ArrayList<Series> SeriesList = new ArrayList<Series>();
-//        ArrayList<Series> MiniSeriesList = new ArrayList<Series>();
-//        ArrayList<Directors> directorsList = new ArrayList<Directors>();
-//        ArrayList<Actors> actorsList = new ArrayList<Actors>();
-//        ArrayList<Accounts> accountsList = new ArrayList<Accounts>();
+
         Data data = new Data();
         data.initiateDataArrays();
 

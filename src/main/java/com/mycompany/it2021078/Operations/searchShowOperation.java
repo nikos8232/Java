@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.it2021078.Operations;
 
 import com.mycompany.it2021078.Constants.Messages;
@@ -36,10 +32,7 @@ import java.util.List;
 
 import java.util.Scanner;
 
-/**
- *
- * @author nik
- */
+
 public class searchShowOperation {
 
     int i;

@@ -1,14 +1,10 @@
-
 package com.mycompany.it2021078.Model.People;
 
 import com.mycompany.it2021078.Model.People.People;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- *
- * @author nik
- */
+
 public class Directors extends People{
     
     @Override

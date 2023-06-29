@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.it2021078.Utils;
+
 import com.mycompany.it2021078.Interfaces.PeopleIDGenerator;
 import com.mycompany.it2021078.Interfaces.ShowIDGenerator;
 import com.mycompany.it2021078.Model.Shows.Movie;
@@ -16,10 +13,6 @@ import com.mycompany.it2021078.Model.Data;
 import com.mycompany.it2021078.Model.People.Directors;
 import java.util.ArrayList;
 
-/**
- *
- * @author nik
- */
 public class UniqueIdGenerator {
     int nextId = 0;
     String finalNextId;
