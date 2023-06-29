@@ -1,4 +1,3 @@
-
 package com.mycompany.it2021078.Model.Shows;
 import com.mycompany.it2021078.Model.Shows.Shows;
 import java.util.ArrayList; // import the ArrayList class
